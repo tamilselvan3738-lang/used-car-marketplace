@@ -1,0 +1,3297 @@
+<!DOCTYPE html>
+<html lang="en" class="dark" dir="ltr">
+<head>
+  <!-- Favicon Suite -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="alternate icon" type="image/png" href="favicon.png">
+  <link rel="shortcut icon" href="favicon.ico">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>USED CAR MARKETPLACE - Ultra-Modern 3D Responsive Navbar</title>
+
+  <!-- Google Fonts: Plus Jakarta Sans (Primary UI) & Orbitron (Automotive Tech Accent) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Orbitron"', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              200: '#bfdbfe',
+              300: '#93c5fd',
+              400: '#60a5fa',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
+              950: '#070b16',
+            },
+            amber: {
+              400: '#fbbf24',
+              500: '#f59e0b',
+              600: '#d97706',
+            }
+          },
+          boxShadow: {
+            '3d-blue': '0 3.5px 0 #1e40af, 0 8px 16px rgba(37,99,235,0.38)',
+            '3d-blue-active': '0 1px 0 #1e40af, 0 3px 6px rgba(37,99,235,0.25)',
+            '3d-amber': '0 3.5px 0 #b45309, 0 8px 16px rgba(245,158,11,0.35)',
+            '3d-slate': '0 2.5px 0 #334155, 0 5px 12px rgba(0,0,0,0.25)',
+            'glow-cyan': '0 0 16px rgba(56, 189, 248, 0.45)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Motion (Official Framer Motion engine for Vanilla / Modern Web) -->
+  <script src="https://cdn.jsdelivr.net/npm/motion@10.16.4/dist/motion.js"></script>
+
+  <style>
+    
+    /* ========================================================================= */
+    /* ACTIVE NAVBAR STATUS STYLING (Light & Dark Mode)                          */
+    /* ========================================================================= */
+    .nav-item.nav-item-active,
+    a.nav-item.nav-item-active,
+    button.nav-item.nav-item-active {
+      color: #0284c7 !important;
+      background: rgba(14, 165, 233, 0.12) !important;
+      border: 1px solid rgba(14, 165, 233, 0.35) !important;
+      font-weight: 700 !important;
+      box-shadow: 0 1px 3px rgba(14, 165, 233, 0.15) !important;
+    }
+    .dark .nav-item.nav-item-active,
+    .dark a.nav-item.nav-item-active,
+    .dark button.nav-item.nav-item-active {
+      color: #22d3ee !important;
+      background: rgba(6, 182, 212, 0.18) !important;
+      border: 1px solid rgba(34, 211, 238, 0.45) !important;
+      box-shadow: 0 0 14px rgba(6, 182, 212, 0.3) !important;
+    }
+
+    .nav-item.nav-item-active.nav-item-sell,
+    a.nav-item.nav-item-active.nav-item-sell {
+      color: #d97706 !important;
+      background: rgba(245, 158, 11, 0.18) !important;
+      border: 1px solid rgba(245, 158, 11, 0.45) !important;
+      box-shadow: 0 1px 4px rgba(245, 158, 11, 0.2) !important;
+    }
+    .dark .nav-item.nav-item-active.nav-item-sell,
+    .dark a.nav-item.nav-item-active.nav-item-sell {
+      color: #fbbf24 !important;
+      background: rgba(245, 158, 11, 0.22) !important;
+      border: 1px solid rgba(251, 191, 36, 0.5) !important;
+      box-shadow: 0 0 14px rgba(245, 158, 11, 0.35) !important;
+    }
+
+    .dropdown-sublink.dropdown-sublink-active,
+    a.dropdown-sublink-active {
+      color: #0284c7 !important;
+      background: rgba(14, 165, 233, 0.12) !important;
+      border-inline-start: 3px solid #0284c7 !important;
+      font-weight: 700 !important;
+    }
+    .dark .dropdown-sublink.dropdown-sublink-active,
+    .dark a.dropdown-sublink-active {
+      color: #22d3ee !important;
+      background: rgba(6, 182, 212, 0.18) !important;
+      border-inline-start: 3px solid #22d3ee !important;
+    }
+
+    .mobile-link.mobile-link-active,
+    .mobile-sublink.mobile-link-active {
+      color: #0284c7 !important;
+      background: rgba(14, 165, 233, 0.12) !important;
+      border-inline-start: 4px solid #0284c7 !important;
+      font-weight: 700 !important;
+    }
+    .dark .mobile-link.mobile-link-active,
+    .dark .mobile-sublink.mobile-link-active {
+      color: #22d3ee !important;
+      background: rgba(6, 182, 212, 0.2) !important;
+      border-inline-start: 4px solid #22d3ee !important;
+    }
+
+    .mobile-link.mobile-link-active.mobile-link-sell {
+      color: #d97706 !important;
+      background: rgba(245, 158, 11, 0.22) !important;
+      border-inline-start: 4px solid #f59e0b !important;
+      font-weight: 800 !important;
+    }
+    .dark .mobile-link.mobile-link-active.mobile-link-sell {
+      color: #fbbf24 !important;
+      background: rgba(245, 158, 11, 0.28) !important;
+      border-inline-start: 4px solid #fbbf24 !important;
+    }
+
+        
+
+        /* ========================================================================= */
+    /* MASTER MOBILE-FIRST RESPONSIVE ENGINE & BREAKPOINT ARCHITECTURE           */
+    /* BREAKPOINTS: 320px (Compact Mobile), 480px (Mobile), 768px (Tablet),     */
+    /*              1024px (Small Laptop / Desktop Transition)                   */
+    /* ========================================================================= */
+
+    /* 1. Global Box-Sizing & Viewport Boundary Lock */
+    *, *::before, *::after {
+      box-sizing: border-box !important;
+      scrollbar-width: none !important;
+      -ms-overflow-style: none !important;
+    }
+    *::-webkit-scrollbar {
+      display: none !important;
+      width: 0 !important;
+      height: 0 !important;
+      background: transparent !important;
+    }
+
+    html {
+      box-sizing: border-box !important;
+      overflow-x: clip !important;
+      max-width: 100vw !important;
+      width: 100% !important;
+      -webkit-text-size-adjust: 100%;
+      scroll-behavior: smooth;
+    }
+
+        body {
+      box-sizing: border-box !important;
+      overflow-x: clip !important;
+      max-width: 100vw !important;
+      width: 100% !important;
+      position: relative !important;
+      margin: 0 !important;
+      padding-top: 5.25rem !important;
+      word-wrap: break-word !important;
+      overflow-wrap: break-word !important;
+    }
+
+    @media (max-width: 640px) {
+      body {
+        padding-top: 4.5rem !important;
+      }
+    }
+
+    /* 2. Guaranteed Fixed / Sticky Header Navigation across all viewports */
+    header.sticky, header[class*="sticky"] {
+      position: fixed !important;
+      top: 0.5rem !important;
+      left: 0.75rem !important;
+      right: 0.75rem !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      width: calc(100% - 1.5rem) !important;
+      max-width: 1500px !important;
+      z-index: 50 !important;
+      overflow: visible !important;
+      transition: all 0.25s ease-in-out !important;
+    }
+
+    @media (max-width: 640px) {
+      header.sticky, header[class*="sticky"] {
+        top: 0.35rem !important;
+        left: 0.5rem !important;
+        right: 0.5rem !important;
+        width: calc(100% - 1rem) !important;
+      }
+    }
+
+    /* Mobile Drawer & Backdrop must layer above the fixed header */
+    #mobile-backdrop {
+      z-index: 55 !important;
+    }
+    #mobile-drawer {
+      z-index: 60 !important;
+    }
+
+    /* 3. Universal Media & Container Bounds: Resize Fluidly */
+    img, picture, video, canvas, svg {
+      max-width: 100% !important;
+      height: auto;
+    }
+
+    /* 4. Prevent Horizontal Overflow in Sections & Wrappers */
+    section, main, article, footer {
+      max-width: 100vw !important;
+      box-sizing: border-box !important;
+      overflow-x: hidden;
+      width: 100% !important;
+    }
+
+    /* Header & dropdown menus must remain visible */
+    header, #site-header, #top-nav-header {
+      overflow: visible !important;
+      max-width: 100vw !important;
+    }
+
+    /* 5. Text Containment & Anti-Overflow */
+    h1, h2, h3, h4, h5, h6, p, span, a, label, button, input, select, textarea {
+      overflow-wrap: break-word !important;
+      word-wrap: break-word !important;
+      word-break: break-word;
+    }
+
+    /* Container fluid max bounds */
+    .container, .mx-auto {
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+    }
+
+    /* ========================================================================= */
+    /* BREAKPOINT: 1024px (Tablets Landscape, Laptops, Mobile Menus)             */
+    /* ========================================================================= */
+    @media (max-width: 1024px) {
+      /* Navbar Collapses into Mobile Menu */
+      #desktop-nav {
+        display: none !important;
+      }
+      #hamburger-btn, .mobile-toggle-btn {
+        display: flex !important;
+      }
+
+      /* Dashboard Sidebar Collapses into Drawer */
+      #admin-sidebar, #user-sidebar, aside.sidebar {
+        display: none !important;
+      }
+      main.dashboard-main, #main-content {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-left: 1.25rem !important;
+        padding-right: 1.25rem !important;
+      }
+
+      /* Equal Section Vertical Spacing (1024px) */
+      section, [id^="sec-"], [id*="-section"] {
+        padding-top: 3.5rem !important;
+        padding-bottom: 3.5rem !important;
+      }
+
+      /* Container Horizontal Padding */
+      .container, [class*="max-w-7xl"], [class*="max-w-[1500px]"], [class*="max-w-6xl"], [class*="max-w-5xl"] {
+        padding-left: 1.25rem !important;
+        padding-right: 1.25rem !important;
+        width: 100% !important;
+      }
+
+      /* Tables Horizontal Touch Scroll */
+      .table-responsive, [class*="overflow-x-auto"] {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+      }
+    }
+
+    /* ========================================================================= */
+    /* BREAKPOINT: 768px (Tablets Portrait & Large Phones)                       */
+    /* ========================================================================= */
+    @media (max-width: 768px) {
+      /* Equal Section Vertical Spacing (768px) */
+      section, [id^="sec-"], [id*="-section"] {
+        padding-top: 2.75rem !important;
+        padding-bottom: 2.75rem !important;
+      }
+
+      /* Container Horizontal Padding */
+      .container, [class*="max-w-7xl"], [class*="max-w-[1500px]"], [class*="max-w-6xl"], [class*="max-w-5xl"] {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+      }
+
+      /* Cards Stack Vertically on Small Screens */
+      .grid.md\:grid-cols-2,
+      .grid.md\:grid-cols-3,
+      .grid.md\:grid-cols-4,
+      .grid.lg\:grid-cols-2,
+      .grid.lg\:grid-cols-3,
+      .grid.lg\:grid-cols-4,
+      .grid.xl\:grid-cols-3,
+      .grid.xl\:grid-cols-4 {
+        grid-template-columns: 1fr !important;
+      }
+
+      /* Flex Containers Stack Vertically */
+      .md\:flex-row,
+      .lg\:flex-row {
+        flex-direction: column !important;
+      }
+
+      /* Responsive Typography (768px) */
+      h1 {
+        font-size: clamp(1.55rem, 5.2vw, 2.15rem) !important;
+        line-height: 1.22 !important;
+      }
+      h2 {
+        font-size: clamp(1.25rem, 4.4vw, 1.65rem) !important;
+        line-height: 1.25 !important;
+      }
+      h3 {
+        font-size: clamp(1.08rem, 3.8vw, 1.35rem) !important;
+        line-height: 1.3 !important;
+      }
+
+      /* Buttons Group Stack */
+      .btn-responsive-group {
+        flex-direction: column !important;
+        width: 100% !important;
+      }
+      .btn-responsive-group > * {
+        width: 100% !important;
+      }
+    }
+
+    /* ========================================================================= */
+    /* BREAKPOINT: 480px (Standard Mobile Phones)                                */
+    /* ========================================================================= */
+    @media (max-width: 480px) {
+      /* Equal Section Vertical Spacing (480px) */
+      section, [id^="sec-"], [id*="-section"] {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+      }
+
+      /* Container Horizontal Padding */
+      .container, [class*="max-w-7xl"], [class*="max-w-[1500px]"], [class*="max-w-6xl"], [class*="max-w-5xl"] {
+        padding-left: 0.75rem !important;
+        padding-right: 0.75rem !important;
+      }
+
+      /* Responsive Typography (480px) */
+      h1 {
+        font-size: clamp(1.35rem, 6.2vw, 1.8rem) !important;
+        line-height: 1.2 !important;
+        letter-spacing: -0.01em !important;
+      }
+      h2 {
+        font-size: clamp(1.15rem, 5.2vw, 1.45rem) !important;
+        line-height: 1.25 !important;
+      }
+      h3 {
+        font-size: clamp(1.0rem, 4.2vw, 1.22rem) !important;
+        line-height: 1.28 !important;
+      }
+      p, span {
+        font-size: 0.875rem;
+      }
+
+      /* Buttons fit mobile screens without overflow */
+      button, a.btn-3d, .btn-3d-primary, .btn-3d-gold, .btn-3d-glass {
+        max-width: 100% !important;
+        word-break: normal !important;
+      }
+      .mobile-full-btn {
+        width: 100% !important;
+        justify-content: center !important;
+      }
+
+      /* Form inputs full width + min 16px to prevent iOS auto-zoom */
+      input:not([type="checkbox"]):not([type="radio"]), select, textarea {
+        font-size: 16px !important;
+        max-width: 100% !important;
+        width: 100% !important;
+      }
+
+      /* Compact Card Padding */
+      .card-compact-mobile, [class*="p-6"], [class*="p-8"] {
+        padding: 1rem !important;
+      }
+
+      /* Mobile Drawer Bounds */
+      #mobile-drawer {
+        width: 100% !important;
+        max-width: 100vw !important;
+      }
+    }
+
+    /* ========================================================================= */
+    /* BREAKPOINT: 320px (Ultra-Compact Mobile Phones)                           */
+    /* ========================================================================= */
+    @media (max-width: 320px) {
+      /* Equal Section Vertical Spacing (320px) */
+      section, [id^="sec-"], [id*="-section"] {
+        padding-top: 1.5rem !important;
+        padding-bottom: 1.5rem !important;
+      }
+
+      /* Ultra-Compact Container Bounds */
+      .container, [class*="max-w-7xl"], [class*="max-w-[1500px]"], [class*="max-w-6xl"], [class*="max-w-5xl"], section, body {
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+      }
+
+      /* Ultra-Compact Typography */
+      h1 {
+        font-size: 1.22rem !important;
+        line-height: 1.2 !important;
+      }
+      h2 {
+        font-size: 1.05rem !important;
+        line-height: 1.22 !important;
+      }
+      h3 {
+        font-size: 0.95rem !important;
+        line-height: 1.25 !important;
+      }
+      p, span {
+        font-size: 0.8rem !important;
+      }
+
+      /* Scale Header Logo */
+      .logo-brand-subtext {
+        display: none !important;
+      }
+      .logo-container {
+        transform: scale(0.88);
+        transform-origin: left center;
+      }
+      [dir="rtl"] .logo-container {
+        transform-origin: right center;
+      }
+
+      /* Buttons Full Width */
+      button, a.btn-3d, .btn-3d-primary, .btn-3d-gold {
+        width: 100% !important;
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+        font-size: 11px !important;
+      }
+
+      /* Card inner padding */
+      [class*="p-4"], [class*="p-5"], [class*="p-6"] {
+        padding: 0.75rem !important;
+      }
+    }
+
+    /* ========================================================================= */
+    /* RTL & THEMING ALIGNMENT GUARDS                                            */
+    /* ========================================================================= */
+    [dir="rtl"] .rtl-flip {
+      transform: scaleX(-1) !important;
+    }
+    [dir="rtl"] .space-x-reverse > :not([hidden]) ~ :not([hidden]) {
+      --tw-space-x-reverse: 1 !important;
+    }
+
+    
+
+    /* Clean Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: rgba(15, 23, 42, 0.6);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #3b82f6;
+      border-radius: 9999px;
+    }
+
+    /* 3D Tactile Buttons Base */
+    .btn-3d {
+      position: relative;
+      transition: all 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+      transform-style: preserve-3d;
+      user-select: none;
+    }
+    .btn-3d:active {
+      transform: translateY(2.5px) !important;
+    }
+
+    /* Primary 3D Blue Button */
+    .btn-3d-primary {
+      background: linear-gradient(180deg, #3b82f6 0%, #1d4ed8 100%);
+      box-shadow: 0 3.5px 0 #1e40af, 0 6px 14px rgba(37, 99, 235, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+    }
+    .btn-3d-primary:hover {
+      background: linear-gradient(180deg, #60a5fa 0%, #2563eb 100%);
+      box-shadow: 0 4.5px 0 #1e40af, 0 8px 18px rgba(37, 99, 235, 0.48), inset 0 1px 0 rgba(255, 255, 255, 0.45);
+      transform: translateY(-1px);
+    }
+    .btn-3d-primary:active {
+      box-shadow: 0 1px 0 #1e40af, 0 2px 5px rgba(37, 99, 235, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+
+    /* 3D Toggle Icon Button (Dark mode & RTL) */
+    .btn-3d-toggle {
+      box-shadow: 0 2.5px 0 #cbd5e1, 0 5px 10px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    }
+    .dark .btn-3d-toggle {
+      box-shadow: 0 2.5px 0 #0f172a, 0 5px 12px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    }
+    .btn-3d-toggle:hover {
+      transform: translateY(-1px);
+    }
+    .btn-3d-toggle:active {
+      transform: translateY(2px) !important;
+      box-shadow: 0 1px 0 #cbd5e1, 0 2px 4px rgba(0, 0, 0, 0.08);
+    }
+    .dark .btn-3d-toggle:active {
+      box-shadow: 0 1px 0 #0f172a, 0 2px 4px rgba(0, 0, 0, 0.4);
+    }
+
+    /* 3D Amber Accent Button */
+    .btn-3d-accent {
+      background: linear-gradient(180deg, #f59e0b 0%, #d97706 100%);
+      box-shadow: 0 2.5px 0 #b45309, 0 5px 12px rgba(245, 158, 11, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+    }
+    .btn-3d-accent:hover {
+      background: linear-gradient(180deg, #fbbf24 0%, #ea580c 100%);
+      box-shadow: 0 3.5px 0 #b45309, 0 7px 15px rgba(245, 158, 11, 0.4);
+      transform: translateY(-1px);
+    }
+    .btn-3d-accent:active {
+      box-shadow: 0 1px 0 #b45309, 0 2px 4px rgba(245, 158, 11, 0.2);
+      transform: translateY(2px) !important;
+    }
+
+    /* Logo Animations & Ambient Engine Glow */
+    @keyframes enginePulse {
+      0%, 100% {
+        filter: drop-shadow(0 0 4px rgba(59, 130, 246, 0.45));
+      }
+      50% {
+        filter: drop-shadow(0 0 12px rgba(56, 189, 248, 0.85)) drop-shadow(0 0 18px rgba(99, 102, 241, 0.35));
+      }
+    }
+    .logo-engine-glow {
+      animation: enginePulse 3.5s infinite ease-in-out;
+    }
+
+    /* Animated Road Speed Streaks */
+    @keyframes roadSpeed {
+      0% {
+        stroke-dashoffset: 0;
+      }
+      100% {
+        stroke-dashoffset: -30;
+      }
+    }
+    .road-animated {
+      stroke-dasharray: 6 3;
+      animation: roadSpeed 1s linear infinite;
+    }
+
+    /* Animated Headlight Projection Beam */
+    .headlight-beam {
+      opacity: 0.15;
+      transform: scaleX(0.4);
+      transform-origin: left center;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .logo-container:hover .headlight-beam {
+      opacity: 0.95;
+      transform: scaleX(1.15);
+    }
+    [dir="rtl"] .headlight-beam {
+      transform-origin: right center;
+    }
+
+    /* Brand Text Metallic Shimmer Effect */
+    @keyframes titleShimmer {
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+    .logo-shimmer {
+      background-size: 200% auto;
+      animation: titleShimmer 5s ease-in-out infinite;
+    }
+
+    /* Framer Motion Floating Active Pill */
+    #nav-indicator {
+      position: absolute;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      border-radius: 9999px;
+      transition: opacity 0.25s ease;
+      opacity: 0;
+      z-index: 0;
+    }
+
+    /* Minimal Clean Dropdown Transitions (Only Target Links) */
+    .dropdown-menu {
+      transform-origin: top center;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(6px) scale(0.97);
+      transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+                  visibility 0.2s;
+    }
+    .dropdown-group:hover .dropdown-menu,
+    .dropdown-group:focus-within .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0) scale(1);
+    }
+
+    /* Tactile Hamburger Icon Bars */
+    .hamburger-bar {
+      display: block !important;
+      width: 18px !important;
+      height: 2px !important;
+      border-radius: 9999px !important;
+      transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease !important;
+    }
+  </style>
+</head>
+<body class="bg-slate-100 text-slate-800 dark:bg-[#070b14] dark:text-slate-100 min-h-screen font-sans antialiased transition-colors duration-300 selection:bg-brand-500 selection:text-white pt-3 sm:pt-4 px-2 sm:px-4">
+
+  <!-- ========================================================================= -->
+  <!-- FLOATING COCKPIT ISLAND NAVBAR DESIGN                                     -->
+  <!-- LAPTOP: LEFT-LOGO, CENTER-MENU, RIGHT-CONTROLS                            -->
+  <!-- MOBILE & TAB: LEFT-LOGO, RIGHT-HAMBURGER                                  -->
+  <!-- ========================================================================= -->
+  <header class="sticky top-2 sm:top-3 z-40 w-full max-w-[1500px] mx-auto transition-all duration-300">
+    <!-- Elevated Cockpit Glass Capsule -->
+    <div class="relative w-full rounded-2xl bg-white/85 dark:bg-[#0b101e]/85 backdrop-blur-2xl border border-slate-200/90 dark:border-slate-800/90 shadow-xl shadow-slate-900/5 dark:shadow-black/40 px-3 sm:px-5 lg:px-6 py-2.5 transition-all duration-300">
+      <div class="flex items-center justify-between h-14">
+
+        <!-- =================================================================== -->
+        <!-- 1. LEFT: SLIGHTLY REDUCED ANIMATED 3D LOGO                          -->
+        <!-- =================================================================== -->
+        <div class="flex-1 flex items-center justify-start min-w-0">
+          <a href="index.html" class="logo-container group flex items-center space-x-2 rtl:space-x-reverse focus:outline-none" aria-label="Used Car Marketplace Home">
+            
+            <!-- Compact 3D Automotive Emblem with Framer Motion Hooks -->
+            <div class="relative flex items-center justify-center flex-shrink-0">
+              <!-- Glow backdrops with dynamic pulse -->
+              <div id="logo-glow-halo" class="absolute -inset-1 rounded-lg bg-gradient-to-r from-blue-600 via-cyan-500 to-indigo-600 opacity-40 group-hover:opacity-100 blur-sm transition-all duration-300"></div>
+              
+              <!-- 3D Vibrant Automotive Emblem Badge (Matching Image 3 & 3D Tactile Design) -->
+              <div id="logo-badge" class="relative w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-br from-blue-600 via-brand-600 to-cyan-500 shadow-3d-blue flex items-center justify-center p-1 border-t border-white/35 transition-all duration-300 group-hover:shadow-glow-cyan cursor-pointer">
+                <div class="w-full h-full rounded-lg bg-gradient-to-br from-blue-700/60 to-cyan-900/60 flex items-center justify-center relative overflow-hidden backdrop-blur-xs">
+                  
+                  <!-- Creative SVG: Aerodynamic Supercar + Revving Speedometer + Spinning Wheels -->
+                  <svg id="logo-svg" class="w-5 h-5 sm:w-6 sm:h-6 text-white overflow-visible logo-engine-glow" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    
+                    <!-- Speedometer Arc / Gauge Background -->
+                    <circle cx="24" cy="24" r="18" stroke="url(#logo-grad-1)" stroke-width="2" stroke-linecap="round" stroke-dasharray="80 30" opacity="0.65"/>
+                    
+                    <!-- Dynamic Revving Speedometer Needle (Targeted by Framer Motion) -->
+                    <g id="logo-needle-group" style="transform-origin: 24px 24px;">
+                      <line x1="24" y1="24" x2="33" y2="15" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+                      <circle cx="24" cy="24" r="3" fill="#38bdf8"/>
+                    </g>
+
+                    <!-- Aerodynamic Sports Coupe Silhouette -->
+                    <g id="logo-car-group">
+                      <path id="logo-car-body" d="M10 28C11 26 13 24 16 23.5L21 21C23 20 26 20 28.5 21L34 23.5C36.5 24.5 38 26.5 39 28H10Z" fill="#ffffff" opacity="0.95"/>
+                      <path d="M16.5 23.5L20.5 17.5C21.5 16 23 15.5 25 15.5H29C31 15.5 32.5 16.5 33.5 18L35.5 23.5H16.5Z" fill="#38bdf8" opacity="0.95"/>
+                      <path d="M21 18.5H28.5L31.5 23H18.5L21 18.5Z" fill="#0284c7" opacity="0.75"/>
+                    </g>
+
+                    <!-- Front Wheel with Spinning Alloy Rim -->
+                    <g id="logo-wheel-front" style="transform-origin: 16px 29px;">
+                      <circle cx="16" cy="29" r="4.5" fill="#0b1121" stroke="#38bdf8" stroke-width="1.8"/>
+                      <line x1="16" y1="25.5" x2="16" y2="32.5" stroke="#38bdf8" stroke-width="1"/>
+                      <line x1="12.5" y1="29" x2="19.5" y2="29" stroke="#38bdf8" stroke-width="1"/>
+                      <circle cx="16" cy="29" r="1.8" fill="#ffffff"/>
+                    </g>
+
+                    <!-- Back Wheel with Spinning Alloy Rim -->
+                    <g id="logo-wheel-back" style="transform-origin: 33px 29px;">
+                      <circle cx="33" cy="29" r="4.5" fill="#0b1121" stroke="#38bdf8" stroke-width="1.8"/>
+                      <line x1="33" y1="25.5" x2="33" y2="32.5" stroke="#38bdf8" stroke-width="1"/>
+                      <line x1="29.5" y1="29" x2="36.5" y2="29" stroke="#38bdf8" stroke-width="1"/>
+                      <circle cx="33" cy="29" r="1.8" fill="#ffffff"/>
+                    </g>
+
+                    <!-- Animated Road Speed Curve -->
+                    <path id="logo-road" class="road-animated" d="M8 35C14 36.5 34 36.5 40 35" stroke="url(#logo-grad-2)" stroke-width="2.2" stroke-linecap="round"/>
+
+                    <!-- Gradients -->
+                    <defs>
+                      <linearGradient id="logo-grad-1" x1="6" y1="6" x2="42" y2="42" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#3b82f6"/>
+                        <stop offset="0.5" stop-color="#38bdf8"/>
+                        <stop offset="1" stop-color="#ec4899"/>
+                      </linearGradient>
+                      <linearGradient id="logo-grad-2" x1="8" y1="35" x2="40" y2="35" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#2563eb"/>
+                        <stop offset="0.5" stop-color="#38bdf8"/>
+                        <stop offset="1" stop-color="#10b981"/>
+                      </linearGradient>
+                      <linearGradient id="logo-car-body-grad" x1="10" y1="21" x2="39" y2="28" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#60a5fa"/>
+                        <stop offset="1" stop-color="#1d4ed8"/>
+                      </linearGradient>
+                      <linearGradient id="logo-car-roof-grad" x1="16" y1="15.5" x2="35" y2="23.5" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#93c5fd"/>
+                        <stop offset="1" stop-color="#3b82f6"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+
+                  <!-- Dynamic High-Beam Headlight Projection -->
+                  <div id="logo-headlight" class="headlight-beam absolute right-0 top-4 w-4 h-1.5 bg-gradient-to-r from-cyan-400 via-sky-300 to-transparent blur-[1px]"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Compact Brand Typography -->
+            <div class="flex flex-col">
+              <div class="flex items-center space-x-1 rtl:space-x-reverse">
+                <span id="logo-brand-text" class="font-display font-black tracking-wider text-[13px] sm:text-sm bg-gradient-to-r from-slate-900 via-blue-600 to-slate-900 dark:from-white dark:via-cyan-300 dark:to-white bg-clip-text text-transparent group-hover:scale-[1.02] transition-transform duration-300 logo-shimmer">
+                  AUTO<span class="text-brand-600 dark:text-cyan-400">NEXUS</span>
+                </span>
+                
+                <!-- 360° Badge with Framer Motion Spin on Hover -->
+                <span id="logo-badge-360" class="inline-flex items-center px-1 py-0.2 text-[7.5px] font-black rounded uppercase bg-gradient-to-r from-brand-600 to-cyan-500 text-white shadow-sm transition-all duration-300">
+                  360°
+                </span>
+              </div>
+              
+              <div class="flex items-center space-x-1 rtl:space-x-reverse -mt-0.5">
+                <span id="logo-subtext" class="logo-brand-subtext text-[6.5px] sm:text-[8px] font-extrabold uppercase tracking-[0.14em] sm:tracking-[0.22em] text-slate-500 dark:text-slate-400 group-hover:text-brand-600 dark:group-hover:text-cyan-300 transition-colors duration-300 truncate">
+                  USED CAR MARKETPLACE
+                </span>
+              </div>
+            </div>
+
+          </a>
+        </div>
+
+        <!-- =================================================================== -->
+        <!-- 2. CENTER: NAVBAR MENU (PERFECTLY CENTERED IN LAPTOP VIEW)          -->
+        <!-- =================================================================== -->
+        <nav class="hidden lg:flex items-center justify-center relative mx-auto flex-shrink-0" id="desktop-nav" aria-label="Main Navigation">
+          <!-- Framer Motion Floating Hover Pill Indicator -->
+          <div id="nav-indicator" class="bg-slate-200/80 dark:bg-white/10 backdrop-blur-md transition-all duration-300 ease-out border border-slate-300/50 dark:border-white/15 shadow-sm"></div>
+
+          <!-- All Navigation Links -->
+          <ul class="flex items-center gap-0.5 xl:gap-1 2xl:gap-1.5 text-[11.5px] xl:text-[12.5px] 2xl:text-[13px] font-semibold text-slate-700 dark:text-slate-200 relative z-10">
+
+            <!-- 1. HOME (On hover it ONLY shows Home 1 and Home 2) -->
+            <li class="relative dropdown-group">
+              <a href="index.html" id="desktop-home-trigger" class="nav-item nav-item-active flex items-center px-2 xl:px-2.5 py-1.5 rounded-full hover:text-brand-600 dark:hover:text-cyan-400 transition-colors group focus:outline-none" aria-haspopup="true" aria-expanded="false">
+                <span>Home</span>
+                <svg class="w-3.5 h-3.5 ml-1 rtl:ml-0 rtl:mr-1 text-slate-400 group-hover:text-brand-500 group-hover:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              </a>
+
+              <!-- Clean Dropdown: ONLY Home 1 and Home 2 -->
+              <div class="dropdown-menu absolute top-full mt-2 left-0 rtl:left-auto rtl:right-0 w-32 p-1 bg-white/95 dark:bg-[#0c1222]/95 backdrop-blur-2xl rounded-xl border border-slate-200/80 dark:border-slate-800/90 shadow-xl shadow-slate-900/10 dark:shadow-black/60 z-50 flex flex-col gap-0.5">
+                <a href="index.html" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-700 dark:text-slate-200 hover:text-brand-600 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-slate-800/80 transition-colors flex items-center">
+                  Home 1
+                </a>
+                <a href="home-2.html" class="dropdown-sublink-active px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-700 dark:text-slate-200 hover:text-brand-600 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-slate-800/80 transition-colors flex items-center">
+                  Home 2
+                </a>
+              </div>
+            </li>
+
+            <!-- 2. ABOUT -->
+            <li>
+              <a href="about.html" class="nav-item flex items-center px-2 xl:px-2.5 py-1.5 rounded-full hover:text-brand-600 dark:hover:text-cyan-400 transition-colors">
+                About
+              </a>
+            </li>
+
+            <!-- 3. BUY CARS -->
+            <li>
+              <a href="buy-cars.html" class="nav-item flex items-center px-2 xl:px-2.5 py-1.5 rounded-full hover:text-brand-600 dark:hover:text-cyan-400 transition-colors whitespace-nowrap">
+                Buy Cars
+              </a>
+            </li>
+
+            <!-- 4. CAR DETAILS -->
+            <li>
+              <a href="car-details.html" class="nav-item flex items-center px-2 xl:px-2.5 py-1.5 rounded-full hover:text-brand-600 dark:hover:text-cyan-400 transition-colors whitespace-nowrap">
+                Car Details
+              </a>
+            </li>
+
+            <!-- 5. SELL YOUR CAR (Highlighted 3D Pill) -->
+            <li>
+              <a href="sell-your-car.html" class="nav-item flex items-center px-2 xl:px-2.5 py-1 rounded-full text-amber-600 dark:text-amber-400 font-bold hover:text-amber-500 transition-colors whitespace-nowrap">
+                <span class="flex items-center">
+                  <svg class="w-3.5 h-3.5 mr-1 rtl:mr-0 rtl:ml-1 text-amber-500 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                  Sell Your Car
+                </span>
+              </a>
+            </li>
+
+            <!-- 6. INSPECTION -->
+            <li>
+              <a href="inspection.html" class="nav-item flex items-center px-2 xl:px-2.5 py-1.5 rounded-full hover:text-brand-600 dark:hover:text-cyan-400 transition-colors">
+                Inspection
+              </a>
+            </li>
+
+
+
+            <!-- 8. FINANCING -->
+            <li>
+              <a href="financing.html" class="nav-item flex items-center px-2 xl:px-2.5 py-1.5 rounded-full hover:text-brand-600 dark:hover:text-cyan-400 transition-colors">
+                Financing
+              </a>
+            </li>
+
+            <!-- 9. FAQ -->
+            <li>
+              <a href="faq.html" class="nav-item flex items-center px-2 xl:px-2.5 py-1.5 rounded-full hover:text-brand-600 dark:hover:text-cyan-400 transition-colors">
+                FAQ
+              </a>
+            </li>
+
+            <!-- 10. CONTACT -->
+            <li>
+              <a href="contact.html" class="nav-item flex items-center px-2 xl:px-2.5 py-1.5 rounded-full hover:text-brand-600 dark:hover:text-cyan-400 transition-colors">
+                Contact
+              </a>
+            </li>
+
+            <!-- 11. DASHBOARD (On hover it ONLY shows Admin Dashboard and User Dashboard) -->
+            <li class="relative dropdown-group">
+              <button id="desktop-dash-trigger" class="nav-item flex items-center px-2 xl:px-2.5 py-1.5 rounded-full hover:text-brand-600 dark:hover:text-cyan-400 transition-colors group focus:outline-none" aria-haspopup="true" aria-expanded="false">
+                <span>Dashboard</span>
+                <svg class="w-3.5 h-3.5 ml-1 rtl:ml-0 rtl:mr-1 text-slate-400 group-hover:text-brand-500 group-hover:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              </button>
+
+              <!-- Clean Dropdown: ONLY Admin Dashboard and User Dashboard -->
+              <div class="dropdown-menu absolute top-full mt-2 right-0 rtl:right-auto rtl:left-0 w-44 p-1 bg-white/95 dark:bg-[#0c1222]/95 backdrop-blur-2xl rounded-xl border border-slate-200/80 dark:border-slate-800/90 shadow-xl shadow-slate-900/10 dark:shadow-black/60 z-50 flex flex-col gap-0.5">
+                <a href="admin-dashboard.html" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-700 dark:text-slate-200 hover:text-brand-600 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-slate-800/80 transition-colors flex items-center">
+                  Admin Dashboard
+                </a>
+                <a href="user-dashboard.html" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-700 dark:text-slate-200 hover:text-brand-600 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-slate-800/80 transition-colors flex items-center">
+                  User Dashboard
+                </a>
+              </div>
+            </li>
+
+          </ul>
+        </nav>
+
+        <!-- =================================================================== -->
+        <!-- 3. RIGHT: DARK MODE, RTL (ONLY ICON), & LOGIN (ONLY "LOGIN" TEXT)   -->
+        <!-- =================================================================== -->
+        <div class="flex-1 flex items-center justify-end space-x-2 rtl:space-x-reverse min-w-0">
+
+          <!-- Desktop Controls -->
+          <div class="hidden lg:flex items-center space-x-2 rtl:space-x-reverse flex-shrink-0">
+            
+            <!-- 3D Dark Mode Toggle Button -->
+            <button id="dark-mode-toggle" class="btn-3d btn-3d-toggle w-9 h-9 p-2 rounded-xl bg-slate-100 dark:bg-slate-800/90 text-slate-700 dark:text-amber-400 border border-slate-300/80 dark:border-slate-700 flex items-center justify-center focus:outline-none" title="Toggle Dark / Light Mode" aria-label="Toggle theme">
+              <svg id="sun-icon" class="w-4 h-4 hidden dark:block text-amber-400 transition-transform duration-300 hover:rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+              </svg>
+              <svg id="moon-icon" class="w-4 h-4 block dark:hidden text-slate-700 transition-transform duration-300 hover:-rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+              </svg>
+            </button>
+
+            <!-- 3D Right-to-Left (RTL) Toggle: ONLY ICON -->
+            <button id="rtl-toggle" class="btn-3d btn-3d-toggle w-9 h-9 p-2 rounded-xl bg-slate-100 dark:bg-slate-800/90 text-slate-700 dark:text-slate-200 border border-slate-300/80 dark:border-slate-700 flex items-center justify-center focus:outline-none" title="Toggle Right-to-Left Layout (RTL / LTR)" aria-label="Toggle text direction">
+              <svg class="w-4 h-4 text-brand-600 dark:text-cyan-400 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/>
+              </svg>
+            </button>
+
+            <!-- Creative 3D Tactile Login Button: ONLY "LOGIN" TEXT (NO ICON) -->
+            <button id="login-btn" onclick="window.location.href='login.html'" class="btn-3d btn-3d-primary px-4 py-1.5 rounded-xl text-white font-bold text-xs tracking-wider flex items-center justify-center cursor-pointer focus:outline-none border-t border-white/30 whitespace-nowrap" aria-label="Login">
+              <span>Login</span>
+            </button>
+          </div>
+
+          <!-- Mobile & Tab Hamburger Button (Right side on Tab & Mobile) -->
+          <div class="flex lg:hidden items-center">
+            <button id="hamburger-btn" class="btn-3d btn-3d-toggle w-9 h-9 p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-white border border-slate-300/80 dark:border-slate-700 flex flex-col items-center justify-center gap-1.5 focus:outline-none relative z-50 cursor-pointer shadow-3d-slate" aria-label="Open mobile navigation menu" aria-expanded="false">
+              <span class="hamburger-bar block w-[18px] h-[2px] bg-slate-800 dark:bg-white rounded-full origin-center pointer-events-none"></span>
+              <span class="hamburger-bar block w-[18px] h-[2px] bg-slate-800 dark:bg-white rounded-full origin-center pointer-events-none"></span>
+              <span class="hamburger-bar block w-[18px] h-[2px] bg-slate-800 dark:bg-white rounded-full origin-center pointer-events-none"></span>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================= -->
+  <!-- 4. MOBILE & TAB DRAWER (ALL MENUS, TOGGLES & LOGIN ARE INSIDE HERE)       -->
+  <!-- ========================================================================= -->
+  <!-- Backdrop Blur Overlay -->
+  <div id="mobile-backdrop" class="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 lg:hidden"></div>
+
+  <!-- Slide-out Drawer Panel -->
+  <aside id="mobile-drawer" class="fixed top-0 bottom-0 right-0 rtl:right-auto rtl:left-0 z-50 w-full sm:w-[360px] max-w-full bg-white/95 dark:bg-[#0c1222]/95 backdrop-blur-2xl border-l rtl:border-l-0 rtl:border-r border-slate-200 dark:border-slate-800 shadow-2xl flex flex-col justify-between transform translate-x-full rtl:-translate-x-full transition-transform duration-300 ease-out lg:hidden" aria-label="Mobile Navigation Menu">
+    
+    <!-- Drawer Header with Mini Animated Logo -->
+    <div class="p-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
+      <div id="drawer-logo" onclick="window.location.href='index.html'" class="flex items-center space-x-2.5 rtl:space-x-reverse cursor-pointer group">
+        <!-- 3D Blue Badge Matching Navbar Logo (Image 3) -->
+        <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-blue-600 via-brand-600 to-cyan-500 flex items-center justify-center text-white shadow-3d-blue border-t border-white/35 flex-shrink-0">
+          <svg class="w-5 h-5 text-white overflow-visible" viewBox="0 0 48 48" fill="none">
+            <!-- Speedometer Arc -->
+            <circle cx="24" cy="24" r="18" stroke="#38bdf8" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="80 30" opacity="0.85"/>
+            <!-- Dynamic Needle -->
+            <line x1="24" y1="24" x2="33" y2="15" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="24" cy="24" r="3" fill="#38bdf8"/>
+            <!-- Sports Car Silhouette -->
+            <path d="M10 28C11 26 13 24 16 23.5L21 21C23 20 26 20 28.5 21L34 23.5C36.5 24.5 38 26.5 39 28H10Z" fill="#ffffff" opacity="0.95"/>
+            <path d="M16.5 23.5L20.5 17.5C21.5 16 23 15.5 25 15.5H29C31 15.5 32.5 16.5 33.5 18L35.5 23.5H16.5Z" fill="#38bdf8" opacity="0.95"/>
+            <!-- Wheels -->
+            <circle cx="16" cy="29" r="4.5" fill="#0b1121" stroke="#38bdf8" stroke-width="1.8"/>
+            <circle cx="33" cy="29" r="4.5" fill="#0b1121" stroke="#38bdf8" stroke-width="1.8"/>
+            <path d="M8 35C14 36.5 34 36.5 40 35" stroke="#38bdf8" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <div class="flex items-center space-x-1 rtl:space-x-reverse">
+            <span class="font-display font-black text-sm text-slate-900 dark:text-white">AUTO<span class="text-brand-500 dark:text-cyan-400">NEXUS</span></span>
+            <span class="inline-flex items-center px-1 py-0.2 text-[7px] font-black rounded uppercase bg-gradient-to-r from-brand-600 to-cyan-500 text-white shadow-sm">360°</span>
+          </div>
+          <div class="text-[7.5px] uppercase tracking-widest text-slate-400 font-bold">Used Car Marketplace</div>
+        </div>
+      </div>
+
+      <!-- Close Button with 3D feel -->
+      <button id="close-drawer-btn" class="btn-3d btn-3d-toggle w-8 h-8 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white border border-slate-200 dark:border-slate-700 flex items-center justify-center focus:outline-none cursor-pointer" aria-label="Close navigation drawer">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Drawer Navigation Links (All menus inside hamburger drawer) -->
+    <div class="flex-1 overflow-y-auto p-4 space-y-1" id="mobile-nav-links">
+      <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-2 px-3">Navigation Menu</div>
+
+      <!-- 1. Home Accordion (Only Home 1 and Home 2) -->
+      <div class="rounded-xl border border-slate-200/80 dark:border-slate-800 overflow-hidden bg-slate-50/60 dark:bg-slate-900/40">
+        <div class="w-full flex items-center justify-between p-2.5 text-xs font-bold text-slate-800 dark:text-white hover:bg-slate-100/80 dark:hover:bg-slate-800/60 transition-colors">
+          <a href="index.html" class="flex-1 flex items-center space-x-2 rtl:space-x-reverse text-slate-800 dark:text-white hover:text-brand-600 dark:hover:text-cyan-400">
+            <svg class="w-4 h-4 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+            <span>Home</span>
+          </a>
+          <button id="mobile-home-accordion-btn" type="button" class="p-1 rounded-lg text-slate-400 hover:text-slate-600 dark:hover:text-white focus:outline-none" aria-label="Toggle Home menu">
+            <svg id="home-accordion-chevron" class="w-3.5 h-3.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+        </div>
+        <div id="mobile-home-content" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out px-3 pb-0 space-y-1">
+          <a href="index.html" class="mobile-sublink flex items-center p-2 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-brand-50 dark:hover:bg-slate-800 hover:text-brand-600 transition-colors">
+            <span>Home 1</span>
+          </a>
+          <a href="home-2.html" class="mobile-sublink mobile-link-active flex items-center p-2 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-brand-50 dark:hover:bg-slate-800 hover:text-brand-600 transition-colors">
+            <span>Home 2</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 2. About -->
+      <a href="about.html" class="mobile-link flex items-center space-x-2 rtl:space-x-reverse p-2.5 rounded-xl text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800/80 transition-colors">
+        <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        <span>About</span>
+      </a>
+
+      <!-- 3. Buy Cars -->
+      <a href="buy-cars.html" class="mobile-link flex items-center space-x-2 rtl:space-x-reverse p-2.5 rounded-xl text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800/80 transition-colors">
+        <svg class="w-4 h-4 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+        <span>Buy Cars</span>
+      </a>
+
+      <!-- 4. Car Details -->
+      <a href="car-details.html" class="mobile-link flex items-center space-x-2 rtl:space-x-reverse p-2.5 rounded-xl text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800/80 transition-colors">
+        <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+        <span>Car Details</span>
+      </a>
+
+      <!-- 5. Sell Your Car -->
+      <a href="sell-your-car.html" class="mobile-link flex items-center justify-between p-2.5 rounded-xl text-xs font-bold bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 hover:bg-amber-500/20 transition-colors">
+        <div class="flex items-center space-x-2 rtl:space-x-reverse">
+          <svg class="w-4 h-4 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span>Sell Your Car</span>
+        </div>
+        <span class="px-1.5 py-0.2 rounded-full text-[9px] font-extrabold bg-amber-500 text-slate-950 uppercase">Instant Cash</span>
+      </a>
+
+      <!-- 6. Inspection -->
+      <a href="inspection.html" class="mobile-link flex items-center space-x-2 rtl:space-x-reverse p-2.5 rounded-xl text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800/80 transition-colors">
+        <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        <span>Inspection</span>
+      </a>
+
+
+
+      <!-- 8. Financing -->
+      <a href="financing.html" class="mobile-link flex items-center space-x-2 rtl:space-x-reverse p-2.5 rounded-xl text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800/80 transition-colors">
+        <svg class="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+        <span>Financing</span>
+      </a>
+
+      <!-- 9. FAQ -->
+      <a href="faq.html" class="mobile-link flex items-center space-x-2 rtl:space-x-reverse p-2.5 rounded-xl text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800/80 transition-colors">
+        <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        <span>FAQ</span>
+      </a>
+
+      <!-- 10. Contact -->
+      <a href="contact.html" class="mobile-link flex items-center space-x-2 rtl:space-x-reverse p-2.5 rounded-xl text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800/80 transition-colors">
+        <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        <span>Contact</span>
+      </a>
+
+      <!-- 11. Dashboard Accordion (Only Admin Dashboard and User Dashboard) -->
+      <div class="rounded-xl border border-slate-200/80 dark:border-slate-800 overflow-hidden bg-slate-50/60 dark:bg-slate-900/40">
+        <button id="mobile-dash-accordion-btn" class="w-full flex items-center justify-between p-2.5 text-xs font-bold text-slate-800 dark:text-white hover:bg-slate-100/80 dark:hover:bg-slate-800/60 transition-colors">
+          <span class="flex items-center space-x-2 rtl:space-x-reverse">
+            <svg class="w-4 h-4 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+            <span>Dashboard</span>
+          </span>
+          <svg id="dash-accordion-chevron" class="w-3.5 h-3.5 text-slate-400 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div id="mobile-dash-content" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out px-3 pb-0 space-y-1">
+          <a href="admin-dashboard.html" class="mobile-sublink flex items-center p-2 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-brand-50 dark:hover:bg-slate-800 hover:text-brand-600 transition-colors">
+            <span>Admin Dashboard</span>
+          </a>
+          <a href="user-dashboard.html" class="mobile-sublink flex items-center p-2 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-brand-50 dark:hover:bg-slate-800 hover:text-brand-600 transition-colors">
+            <span>User Dashboard</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Drawer Bottom Controls: Dark Mode Toggle, RTL Toggle (Only Icon) & 3D Login Button (Only "Login" text) -->
+    <div class="p-4 border-t border-slate-200 dark:border-slate-800 bg-slate-50/80 dark:bg-slate-900/80 space-y-2.5">
+      
+      <!-- Toggles Grid: Dark Mode + RTL (Icon only) -->
+      <div class="grid grid-cols-2 gap-2">
+        <!-- Mobile 3D Dark Mode Toggle -->
+        <button id="mobile-dark-mode-toggle" class="btn-3d btn-3d-toggle p-2 rounded-xl bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-300/80 dark:border-slate-700 flex items-center justify-center space-x-1.5 rtl:space-x-reverse text-xs font-bold focus:outline-none">
+          <span class="dark:hidden flex items-center space-x-1 rtl:space-x-reverse">
+            <svg class="w-3.5 h-3.5 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+            <span class="text-[11px]">Dark</span>
+          </span>
+          <span class="hidden dark:flex items-center space-x-1 rtl:space-x-reverse">
+            <svg class="w-3.5 h-3.5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+            </svg>
+            <span class="text-[11px]">Light</span>
+          </span>
+        </button>
+
+        <!-- Mobile 3D RTL Toggle (Icon Only) -->
+        <button id="mobile-rtl-toggle" class="btn-3d btn-3d-toggle p-2 rounded-xl bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-300/80 dark:border-slate-700 flex items-center justify-center focus:outline-none" title="Toggle RTL">
+          <svg class="w-4 h-4 text-brand-600 dark:text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+        </button>
+      </div>
+
+      <!-- Mobile 3D Login Button (ONLY "Login" TEXT) -->
+      <button id="mobile-login-btn" onclick="window.location.href='login.html'" class="btn-3d btn-3d-primary w-full py-2 rounded-xl text-white font-bold text-xs tracking-wider flex items-center justify-center cursor-pointer border-t border-white/30 focus:outline-none">
+        <span>Login</span>
+      </button>
+
+    </div>
+  </aside>
+
+  <!-- ========================================================================= -->
+  <!-- MAIN DERMATOLOGY & CUTANEOUS ARCHITECTURE (6 RADICALLY UNIQUE SECTIONS)   -->
+  <!-- ========================================================================= -->
+  <main class="w-full">
+
+    <!-- ======================================================================= -->
+    <!-- SECTION 1: THE BIOMETRIC GLASS ROTUNDA & DERMAL COMMAND HUB             -->
+    <!-- Layout: Avant-Garde Radial Rotunda with Central Multi-Spectral Orb &    -->
+    <!-- 4 Orbiting Biometric Pods + Interactive Radial Triage Selector           -->
+    <!-- ======================================================================= -->
+    <section id="section-rotunda-hero" class="relative pt-8 sm:pt-14 pb-20 lg:pb-28 overflow-hidden">
+      <!-- Ambient Laser Ring Gradients -->
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[750px] h-[750px] bg-gradient-to-tr from-teal-500/10 via-cyan-500/10 to-rose-500/10 rounded-full blur-[130px] pointer-events-none -z-10"></div>
+      
+      <div class="w-full max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        
+        <!-- Editorial Architectural Masthead -->
+        <div id="rotunda-masthead" class="text-center max-w-4xl mx-auto space-y-4">
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-600 dark:text-teal-400 text-xs font-mono font-bold tracking-widest uppercase">
+            <span class="w-2 h-2 rounded-full bg-teal-500 animate-ping"></span>
+            <span>NEXUSDERMA &bull; INSTITUTE OF CUTANEOUS ARCHITECTURE</span>
+          </div>
+
+          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white font-display tracking-tight leading-[1.12]">
+            Cellular Medicine Meets <br class="hidden sm:inline">
+            <span class="bg-gradient-to-r from-teal-500 via-cyan-400 to-rose-400 bg-clip-text text-transparent">Sculptural Precision</span>
+          </h1>
+
+          <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 font-sans leading-relaxed max-w-2xl mx-auto">
+            Board-certified medical dermatologists deploying VISIA 8th-generation 3D multi-spectral diagnostics, dual-wave picosecond lasers, and bio-identical exosome science.
+          </p>
+        </div>
+
+        <!-- The Radial Rotunda Grid: 4 Orbiting Biometric Pods around Central Visual -->
+        <div id="rotunda-chamber" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          
+          <!-- Left 2 Biometric Pods (lg:col-span-3) -->
+          <div class="lg:col-span-3 space-y-4 order-2 lg:order-1">
+            
+            <!-- Pod 1: Epidermal Barrier Index -->
+            <div class="rotunda-pod p-5 rounded-3xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800 shadow-xl space-y-2 hover:border-teal-500 transition-all">
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400">BIOMETRIC 01</span>
+                <span class="w-2.5 h-2.5 rounded-full bg-teal-500"></span>
+              </div>
+              <h3 class="text-xs font-bold text-slate-900 dark:text-white font-display">Epidermal Barrier SOH</h3>
+              <p class="text-2xl font-black text-teal-600 dark:text-teal-400 font-display">99.4%</p>
+              <div class="w-full bg-slate-100 dark:bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                <div class="bg-teal-500 h-full rounded-full" style="width: 99.4%;"></div>
+              </div>
+              <p class="text-[10px] text-slate-500 dark:text-slate-400">Transepidermal Water Loss: Minimal (6.2 g/m²h)</p>
+            </div>
+
+            <!-- Pod 2: Dermal Elasticity Vector -->
+            <div class="rotunda-pod p-5 rounded-3xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800 shadow-xl space-y-2 hover:border-rose-500 transition-all">
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400">BIOMETRIC 02</span>
+                <span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
+              </div>
+              <h3 class="text-xs font-bold text-slate-900 dark:text-white font-display">Collagen Neogenesis</h3>
+              <p class="text-2xl font-black text-rose-500 font-display">+41.2%</p>
+              <div class="w-full bg-slate-100 dark:bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                <div class="bg-rose-500 h-full rounded-full" style="width: 82%;"></div>
+              </div>
+              <p class="text-[10px] text-slate-500 dark:text-slate-400">Type I &amp; III Fibroblast Secretion Peak</p>
+            </div>
+
+          </div>
+
+          <!-- Central Multi-Spectral Orb & Live Triage Cockpit (lg:col-span-6) -->
+          <div class="lg:col-span-6 order-1 lg:order-2 flex flex-col items-center">
+            
+            <!-- Central Rotunda Visual Deck -->
+            <div id="central-scanner-orb" class="relative w-full max-w-lg rounded-3xl p-4 bg-gradient-to-b from-teal-500/15 via-white/80 dark:via-slate-900/90 to-slate-100/90 dark:to-[#070e1c] border-2 border-teal-500/40 shadow-2xl backdrop-blur-2xl">
+              
+              <div class="relative w-full h-72 sm:h-88 rounded-2xl overflow-hidden shadow-inner group">
+                <img src="images/derma_hero_clinic.jpg" alt="NexusDerma Clinical Suite" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-transparent to-transparent"></div>
+                
+                <!-- Reticle Crosshair HUD -->
+                <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                  <div class="w-36 h-36 rounded-full border border-teal-400/60 animate-ping opacity-25"></div>
+                  <div class="absolute w-44 h-44 rounded-full border border-cyan-400/40 border-dashed"></div>
+                </div>
+
+                <!-- Overlaid Live Diagnostic Readout -->
+                <div class="absolute bottom-4 left-4 right-4 p-3.5 rounded-2xl bg-slate-900/85 backdrop-blur-md border border-slate-700/80 flex items-center justify-between text-white text-xs">
+                  <div>
+                    <p class="font-bold font-display text-teal-300">Live VISIA Multi-Spectral Core</p>
+                    <p class="text-[10px] text-slate-400 font-mono">140x Polarization &bull; UV Porphyrin Mapping</p>
+                  </div>
+                  <span class="px-2.5 py-1 rounded-lg bg-teal-500 text-slate-950 font-black text-[10px] font-mono">
+                    CALIBRATED
+                  </span>
+                </div>
+              </div>
+
+              <!-- Interactive Radial Target Switcher -->
+              <div class="mt-4 pt-4 border-t border-slate-200 dark:border-slate-800 space-y-3">
+                <div class="flex items-center justify-between text-xs font-bold">
+                  <span class="text-slate-600 dark:text-slate-400">Select Biological Target:</span>
+                  <span id="active-target-label" class="text-teal-600 dark:text-teal-400 font-mono">MELASMA &amp; PIGMENTATION</span>
+                </div>
+
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                  <button type="button" onclick="selectRotundaTarget('melasma')" class="rotunda-target-btn active p-2 rounded-xl bg-teal-600 text-white font-mono text-[10px] font-bold shadow transition-all">Melasma</button>
+                  <button type="button" onclick="selectRotundaTarget('acne')" class="rotunda-target-btn p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-mono text-[10px] font-bold hover:bg-teal-500/20 transition-all">Acne Scars</button>
+                  <button type="button" onclick="selectRotundaTarget('laxity')" class="rotunda-target-btn p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-mono text-[10px] font-bold hover:bg-teal-500/20 transition-all">Jawline Lift</button>
+                  <button type="button" onclick="selectRotundaTarget('rosacea')" class="rotunda-target-btn p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-mono text-[10px] font-bold hover:bg-teal-500/20 transition-all">Rosacea</button>
+                </div>
+
+                <!-- Instant Action Button -->
+                <button onclick="requestDermaConsultation()" class="btn-3d w-full h-11 rounded-xl bg-gradient-to-r from-teal-600 via-cyan-600 to-rose-600 hover:from-teal-500 hover:to-rose-500 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-lg shadow-teal-500/25">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                  <span>Book Targeted Consultation with Attending Fellow</span>
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- Right 2 Biometric Pods (lg:col-span-3) -->
+          <div class="lg:col-span-3 space-y-4 order-3">
+            
+            <!-- Pod 3: Subsurface Pigment Depth -->
+            <div class="rotunda-pod p-5 rounded-3xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800 shadow-xl space-y-2 hover:border-cyan-500 transition-all">
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400">BIOMETRIC 03</span>
+                <span class="w-2.5 h-2.5 rounded-full bg-cyan-500"></span>
+              </div>
+              <h3 class="text-xs font-bold text-slate-900 dark:text-white font-display">Pigment Clearance Vector</h3>
+              <p class="text-2xl font-black text-cyan-600 dark:text-cyan-400 font-display">0.08 mm</p>
+              <div class="w-full bg-slate-100 dark:bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                <div class="bg-cyan-500 h-full rounded-full" style="width: 94%;"></div>
+              </div>
+              <p class="text-[10px] text-slate-500 dark:text-slate-400">Melanophage Phagocytosis Rate: 4.8x</p>
+            </div>
+
+            <!-- Pod 4: Vascular Capillary Density -->
+            <div class="rotunda-pod p-5 rounded-3xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800 shadow-xl space-y-2 hover:border-amber-500 transition-all">
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400">BIOMETRIC 04</span>
+                <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+              </div>
+              <h3 class="text-xs font-bold text-slate-900 dark:text-white font-display">Vascular Caliber Index</h3>
+              <p class="text-2xl font-black text-amber-500 font-display">Normal</p>
+              <div class="w-full bg-slate-100 dark:bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                <div class="bg-amber-500 h-full rounded-full" style="width: 88%;"></div>
+              </div>
+              <p class="text-[10px] text-slate-500 dark:text-slate-400">Erythema Calmed via 595nm PDL Laser</p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+    
+
+    <!-- ======================================================================= -->
+    <!-- SECTION 2: THE WAVELENGTH SPECTRUM RIBBON & HOLOGRAPHIC LASER SUITES    -->
+    <!-- Layout: Continuous Optical Spectrum Ribbon (532nm to 10600nm) with      -->
+    <!-- Angled Chamfered Laser Suites & Real-Time Fluence Readouts              -->
+    <!-- ======================================================================= -->
+    <section id="section-spectrum-lasers" class="relative py-16 sm:py-24 bg-slate-50/80 dark:bg-[#060b17] border-y border-slate-200/90 dark:border-slate-800">
+      <div class="w-full max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        
+        <!-- Header -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div>
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-600 dark:text-cyan-400 text-xs font-mono font-bold uppercase tracking-wider mb-2">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+              <span>OPTICAL THERAPEUTICS</span>
+            </div>
+            <h2 class="text-2xl sm:text-4xl font-black text-slate-900 dark:text-white font-display">
+              The Optical Wavelength <span class="text-cyan-500">Spectrum</span>
+            </h2>
+            <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-1 max-w-xl">
+              Precision targeting of selective chromophores: Oxyhemoglobin, Melanin, and Water. Zero thermal dispersion into healthy surrounding dermis.
+            </p>
+          </div>
+
+          <div class="flex items-center gap-2 font-mono text-xs text-slate-400 bg-white dark:bg-slate-900 px-4 py-2 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span>FDA 510(k) Cleared Beam Alignment</span>
+          </div>
+        </div>
+
+        <!-- Continuous Wavelength Ribbon Selector -->
+        <div class="p-3 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-lg overflow-x-auto">
+          <div class="flex items-center justify-between min-w-[700px] gap-2 font-mono text-xs">
+            <button onclick="selectWavelength('532')" id="wave-btn-532" class="wave-pill active flex-1 p-2.5 rounded-xl bg-teal-500/20 text-teal-600 dark:text-teal-400 border border-teal-500 font-bold transition-all text-center">
+              <span class="block text-[10px] text-slate-400">KTP GREEN</span>
+              <span>532 nm</span>
+            </button>
+            <button onclick="selectWavelength('595')" id="wave-btn-595" class="wave-pill flex-1 p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 font-bold hover:bg-slate-100 transition-all text-center">
+              <span class="block text-[10px] text-slate-400">PULSED DYE</span>
+              <span>595 nm</span>
+            </button>
+            <button onclick="selectWavelength('755')" id="wave-btn-755" class="wave-pill flex-1 p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 font-bold hover:bg-slate-100 transition-all text-center">
+              <span class="block text-[10px] text-slate-400">PICOSURE</span>
+              <span>755 nm</span>
+            </button>
+            <button onclick="selectWavelength('1064')" id="wave-btn-1064" class="wave-pill flex-1 p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 font-bold hover:bg-slate-100 transition-all text-center">
+              <span class="block text-[10px] text-slate-400">Q-SWITCH ND:YAG</span>
+              <span>1064 nm</span>
+            </button>
+            <button onclick="selectWavelength('10600')" id="wave-btn-10600" class="wave-pill flex-1 p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 font-bold hover:bg-slate-100 transition-all text-center">
+              <span class="block text-[10px] text-slate-400">FRACTIONAL CO2</span>
+              <span>10,600 nm</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 2-Column Split: Active Optical Suite Dossier & Image Deck -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          
+          <!-- Left: Active Laser Suite Readout Card (lg:col-span-6) -->
+          <div class="lg:col-span-6 p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl space-y-6">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-teal-500"></span>
+                <span id="laser-model-tag" class="text-xs font-mono font-bold text-teal-600 dark:text-teal-400 uppercase">PicoSure Pro 755nm Alexandrite</span>
+              </div>
+              <span id="laser-pulse-tag" class="text-[10px] font-mono bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded text-slate-500">Pulse: 450 Picoseconds</span>
+            </div>
+
+            <div class="space-y-3">
+              <h3 id="laser-title" class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white font-display">
+                Sub-Acoustic Photomechanical Disruption
+              </h3>
+              <p id="laser-desc" class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                Utilizes ultra-short pressure waves rather than photothermal heat to shatter dense epidermal melanosomes and stubborn post-inflammatory hyperpigmentation into micro-dust.
+              </p>
+            </div>
+
+            <!-- Optical Physics Matrix -->
+            <div class="grid grid-cols-3 gap-3 text-center font-mono">
+              <div class="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-700/60">
+                <p class="text-[9px] text-slate-400">CHROMOPHORE</p>
+                <p id="laser-chromo" class="text-xs font-bold text-slate-800 dark:text-slate-200">Melanin Core</p>
+              </div>
+              <div class="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-700/60">
+                <p class="text-[9px] text-slate-400">PENETRATION</p>
+                <p id="laser-depth" class="text-xs font-bold text-teal-600 dark:text-teal-400">1.2 mm Dermis</p>
+              </div>
+              <div class="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-700/60">
+                <p class="text-[9px] text-slate-400">DOWNTIME</p>
+                <p id="laser-down" class="text-xs font-bold text-emerald-500">&lt; 12 Hours</p>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-3 pt-2">
+              <button onclick="openProcedureDossier('Optical Laser Suite')" class="flex-1 btn-3d w-full h-11 rounded-xl bg-teal-600 hover:bg-teal-500 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-md">
+                <span>Request Treatment Dossier</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Right: Laser Precision Chamber Visual (lg:col-span-6) -->
+          <div class="lg:col-span-6 relative">
+            <div id="laser-visual-chamber" class="rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-2xl relative">
+              <div class="w-full h-72 sm:h-96 relative">
+                <img src="images/derma_laser_resurfacing.jpg" alt="Laser Resurfacing Suite" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-transparent to-transparent"></div>
+
+                <!-- Laser Crosshair Grid -->
+                <div class="absolute top-4 right-4 p-3 rounded-xl bg-slate-900/85 backdrop-blur-md border border-slate-700 font-mono text-[10px] text-teal-300">
+                  <p>SPOT SIZE: 6.0 mm</p>
+                  <p>FLUENCE: 2.8 J/cm²</p>
+                  <p>FREQ: 10 Hz REPETITION</p>
+                </div>
+
+                <div class="absolute bottom-4 left-4 right-4 p-3.5 rounded-2xl bg-slate-900/85 backdrop-blur-md border border-slate-700 text-white text-xs flex items-center justify-between">
+                  <div>
+                    <p class="font-bold font-display text-white">Class IV Medical Laser Enclosure</p>
+                    <p class="text-[10px] text-slate-400">Cryogen Dynamic Cooling Device (DCD) Integrated</p>
+                  </div>
+                  <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-mono text-[10px]">
+                    100% PAINLESS NUMBING
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+    
+
+    <!-- ======================================================================= -->
+    <!-- SECTION 3: THE DOUBLE-HELIX SPLIT PRISM (BEFORE & AFTER LABORATORY)     -->
+    <!-- Layout: Dual-Angle Cross-Polarized Prism with Interactive Fitzpatrick    -->
+    <!-- Phototype Dial & Biopsy Histology Telemetry                             -->
+    <!-- ======================================================================= -->
+    <section id="section-prism-transformations" class="relative py-16 sm:py-24 overflow-hidden">
+      <div class="w-full max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        
+        <!-- Header -->
+        <div class="text-center max-w-3xl mx-auto space-y-3">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/20 text-rose-600 dark:text-rose-400 text-xs font-mono font-bold uppercase tracking-wider">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+            <span>HISTOLOGICAL OUTCOMES</span>
+          </div>
+          <h2 class="text-2xl sm:text-4xl font-black text-slate-900 dark:text-white font-display">
+            The Cross-Polarized <span class="text-rose-500">Prism Laboratory</span>
+          </h2>
+          <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400">
+            Comparing subsurface pathology against post-therapeutic epidermal restoration. Verified under 3-light standardized dermoscopy.
+          </p>
+        </div>
+
+        <!-- Interactive Fitzpatrick Scale Dial (Types I to VI) -->
+        <div class="flex justify-center">
+          <div class="inline-flex p-1.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-md gap-1 flex-wrap justify-center">
+            <button onclick="selectFitzpatrick('type1')" id="fitz-1" class="fitz-pill px-3 py-1.5 rounded-xl text-xs font-mono font-bold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all">Type I (Pale)</button>
+            <button onclick="selectFitzpatrick('type2')" id="fitz-2" class="fitz-pill px-3 py-1.5 rounded-xl text-xs font-mono font-bold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all">Type II (Fair)</button>
+            <button onclick="selectFitzpatrick('type3')" id="fitz-3" class="fitz-pill active px-3 py-1.5 rounded-xl text-xs font-mono font-bold bg-rose-500 text-white shadow transition-all">Type III (Medium)</button>
+            <button onclick="selectFitzpatrick('type4')" id="fitz-4" class="fitz-pill px-3 py-1.5 rounded-xl text-xs font-mono font-bold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all">Type IV (Olive)</button>
+            <button onclick="selectFitzpatrick('type5')" id="fitz-5" class="fitz-pill px-3 py-1.5 rounded-xl text-xs font-mono font-bold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all">Type V-VI (Deep)</button>
+          </div>
+        </div>
+
+        <!-- The Prism Split Comparison Arena -->
+        <div id="prism-arena" class="rounded-3xl p-4 sm:p-6 bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 border border-slate-800 shadow-2xl text-white">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            
+            <!-- Left: Dual Monolith Comparison Visual (lg:col-span-7) -->
+            <div class="lg:col-span-7 relative rounded-2xl overflow-hidden border border-slate-700">
+              <div class="w-full h-80 sm:h-[420px] relative">
+                <img id="prism-compare-img" src="images/derma_before_after.jpg" alt="Polarized Dermatological Comparison" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent"></div>
+
+                <!-- Vertical Optical Divider Laser Line -->
+                <div class="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-0.5 bg-gradient-to-b from-rose-500 via-white to-teal-500 shadow-[0_0_12px_#ffffff]"></div>
+
+                <!-- Labels -->
+                <div class="absolute top-4 left-4 p-2 rounded-xl bg-slate-950/80 border border-rose-500 text-rose-400 font-mono text-xs">
+                  <span class="font-bold">PARALLEL POLARIZATION</span>
+                  <span class="block text-[9px] text-slate-400">Surface Epidermal Roughness</span>
+                </div>
+                <div class="absolute top-4 right-4 p-2 rounded-xl bg-slate-950/80 border border-teal-500 text-teal-400 font-mono text-xs text-right">
+                  <span class="font-bold">CROSS-POLARIZATION</span>
+                  <span class="block text-[9px] text-slate-400">Deep Dermal Dermis Restored</span>
+                </div>
+
+                <!-- Case Readout Ribbon -->
+                <div class="absolute bottom-4 left-4 right-4 p-3 rounded-xl bg-slate-950/90 border border-slate-800 flex items-center justify-between text-xs">
+                  <div>
+                    <p id="prism-case-name" class="font-bold font-display text-white">Case Ref: #8904 - Refractory Melasma</p>
+                    <p id="prism-case-stats" class="text-[10px] text-slate-400">Fitzpatrick Type III &bull; 6 Sessions Dual-Pico Protocol</p>
+                  </div>
+                  <div class="text-right">
+                    <span id="prism-clearance" class="text-lg font-black text-rose-400 font-display">98.4%</span>
+                    <p class="text-[9px] text-slate-400 font-mono">Dermal Clearance</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: Histological Biopsy Analysis Panel (lg:col-span-5) -->
+            <div class="lg:col-span-5 space-y-5">
+              <div class="space-y-2">
+                <span class="text-xs font-mono font-bold text-teal-400 uppercase tracking-widest">BIOMARKER CLEARANCE DOSSIER</span>
+                <h3 id="prism-dossier-title" class="text-xl sm:text-2xl font-black font-display text-white">
+                  Melanin Granule Liquefaction &amp; Barrier Healing
+                </h3>
+                <p id="prism-dossier-body" class="text-xs text-slate-300 leading-relaxed">
+                  Post-treatment confocal laser microscopy reveals restoration of the basal membrane integrity. Dendritic melanocyte hyperactivity successfully down-regulated with 0 post-inflammatory hyperpigmentation.
+                </p>
+              </div>
+
+              <!-- Telemetry Checklist -->
+              <div class="space-y-2 font-mono text-xs">
+                <div class="p-3 rounded-xl bg-slate-800/80 border border-slate-700 flex items-center justify-between">
+                  <span class="text-slate-400">MELANOSOME AGGREGATE:</span>
+                  <span class="text-emerald-400 font-bold">-94.8% Reduction</span>
+                </div>
+                <div class="p-3 rounded-xl bg-slate-800/80 border border-slate-700 flex items-center justify-between">
+                  <span class="text-slate-400">EPIDERMAL THICKNESS:</span>
+                  <span class="text-white font-bold">+18% Stratum Corneum</span>
+                </div>
+                <div class="p-3 rounded-xl bg-slate-800/80 border border-slate-700 flex items-center justify-between">
+                  <span class="text-slate-400">TRANSEPIDERMAL WATER:</span>
+                  <span class="text-teal-400 font-bold">Normalized 6.8 g/m²h</span>
+                </div>
+              </div>
+
+              <button onclick="requestDermaConsultation()" class="btn-3d w-full h-11 rounded-xl bg-gradient-to-r from-rose-500 to-teal-500 hover:from-rose-400 hover:to-teal-400 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-lg">
+                <span>Evaluate My Skin Under Cross-Polarized Light</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+    
+
+    <!-- ======================================================================= -->
+    <!-- SECTION 4: THE CLINICAL FELLOW QUAD-MONOLITH (FACULTY DOSSIER)          -->
+    <!-- Layout: Editorial Architectural Monolith Grid with Interactive Medical  -->
+    <!-- Seals, Publication Citations & Direct Fellow Scheduling                 -->
+    <!-- ======================================================================= -->
+    <section id="section-faculty-monoliths" class="relative py-16 sm:py-24 bg-slate-50/80 dark:bg-[#060b17] border-y border-slate-200/90 dark:border-slate-800">
+      <div class="w-full max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        
+        <!-- Header -->
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+          <div>
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/20 text-teal-600 dark:text-teal-400 text-xs font-mono font-bold uppercase tracking-wider mb-2">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+              <span>AMERICAN ACADEMY OF DERMATOLOGY</span>
+            </div>
+            <h2 class="text-2xl sm:text-4xl font-black text-slate-900 dark:text-white font-display">
+              Clinical Fellowship <span class="text-teal-500">Quad-Monolith</span>
+            </h2>
+            <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-1 max-w-xl">
+              Led by double-boarded dermatologists holding clinical appointments at Harvard, Stanford, and Johns Hopkins.
+            </p>
+          </div>
+
+          <div class="flex items-center gap-2 font-mono text-xs text-amber-500 bg-amber-500/10 border border-amber-500/20 px-4 py-2 rounded-2xl">
+            <span>FAAD Gold Accreditation #8812</span>
+          </div>
+        </div>
+
+        <!-- 3 Architectural Monolith Cards -->
+        <div id="monolith-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+          
+          <!-- Monolith 1 -->
+          <div class="faculty-monolith group p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl hover:shadow-2xl hover:border-teal-500 transition-all duration-300 flex flex-col justify-between space-y-6">
+            <div class="space-y-4">
+              <div class="relative w-full h-56 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800">
+                <img src="images/derma_medical_director.jpg" alt="Dr. Elena Vance" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                <span class="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-teal-600 text-white font-mono text-[10px] font-bold shadow">
+                  HARVARD FELLOW
+                </span>
+                <span class="absolute bottom-3 right-3 px-2 py-0.5 rounded bg-slate-950/80 backdrop-blur-md text-amber-400 font-mono text-[10px] border border-amber-500/40">
+                  FAAD #49021
+                </span>
+              </div>
+
+              <div>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white font-display">Dr. Elena Vance, MD</h3>
+                <p class="text-xs font-semibold text-teal-600 dark:text-teal-400">Chief Dermatologist &amp; Laser Director</p>
+                <p class="text-[11px] text-slate-400 mt-1">16+ Years &bull; 14,200 Laser Surgeries &bull; 40+ Citations</p>
+              </div>
+
+              <div class="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/60 text-xs font-mono text-slate-600 dark:text-slate-300 space-y-1">
+                <p class="text-[10px] text-slate-400 font-bold uppercase">Clinical Focus</p>
+                <p>&bull; PicoSure Multi-Wavelength Laser</p>
+                <p>&bull; Refractory Melasma Epigenetics</p>
+              </div>
+            </div>
+
+            <button onclick="bookWithPhysician('Dr. Elena Vance')" class="btn-3d w-full h-10 rounded-xl bg-teal-500/10 hover:bg-teal-500/20 text-teal-600 dark:text-teal-400 font-bold text-xs flex items-center justify-center gap-1.5 transition-colors">
+              <span>Schedule Direct with Dr. Vance</span>
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+
+          <!-- Monolith 2 -->
+          <div class="faculty-monolith group p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl hover:shadow-2xl hover:border-rose-500 transition-all duration-300 flex flex-col justify-between space-y-6">
+            <div class="space-y-4">
+              <div class="relative w-full h-56 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800">
+                <img src="images/derma_medical_director.jpg" alt="Dr. Marcus Sterling" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                <span class="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-rose-600 text-white font-mono text-[10px] font-bold shadow">
+                  JOHNS HOPKINS
+                </span>
+                <span class="absolute bottom-3 right-3 px-2 py-0.5 rounded bg-slate-950/80 backdrop-blur-md text-amber-400 font-mono text-[10px] border border-amber-500/40">
+                  FACS #19820
+                </span>
+              </div>
+
+              <div>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white font-display">Dr. Marcus Sterling, MD</h3>
+                <p class="text-xs font-semibold text-rose-500">Facial Architecture &amp; Biostimulators</p>
+                <p class="text-[11px] text-slate-400 mt-1">14+ Years &bull; 11,800 Micro-Cannula Procedures</p>
+              </div>
+
+              <div class="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/60 text-xs font-mono text-slate-600 dark:text-slate-300 space-y-1">
+                <p class="text-[10px] text-slate-400 font-bold uppercase">Clinical Focus</p>
+                <p>&bull; Sculptra Neocollagenesis</p>
+                <p>&bull; Anatomical Vectoring &amp; Jawline Contour</p>
+              </div>
+            </div>
+
+            <button onclick="bookWithPhysician('Dr. Marcus Sterling')" class="btn-3d w-full h-10 rounded-xl bg-rose-500/10 hover:bg-rose-500/20 text-rose-600 dark:text-rose-400 font-bold text-xs flex items-center justify-center gap-1.5 transition-colors">
+              <span>Schedule Direct with Dr. Sterling</span>
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+
+          <!-- Monolith 3 -->
+          <div class="faculty-monolith group p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl hover:shadow-2xl hover:border-cyan-500 transition-all duration-300 flex flex-col justify-between space-y-6">
+            <div class="space-y-4">
+              <div class="relative w-full h-56 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800">
+                <img src="images/derma_medical_director.jpg" alt="Dr. Sophia Chen" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                <span class="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-cyan-600 text-white font-mono text-[10px] font-bold shadow">
+                  STANFORD PhD
+                </span>
+                <span class="absolute bottom-3 right-3 px-2 py-0.5 rounded bg-slate-950/80 backdrop-blur-md text-amber-400 font-mono text-[10px] border border-amber-500/40">
+                  FAAD #66103
+                </span>
+              </div>
+
+              <div>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white font-display">Dr. Sophia Chen, MD, PhD</h3>
+                <p class="text-xs font-semibold text-cyan-500">Cutaneous Biology &amp; Exosomes</p>
+                <p class="text-[11px] text-slate-400 mt-1">12+ Years &bull; 32 Peer Papers &bull; Stanford Lab Lead</p>
+              </div>
+
+              <div class="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/60 text-xs font-mono text-slate-600 dark:text-slate-300 space-y-1">
+                <p class="text-[10px] text-slate-400 font-bold uppercase">Clinical Focus</p>
+                <p>&bull; Exosome Regenerative Vesicles</p>
+                <p>&bull; Severe Acne Microbiome Restoration</p>
+              </div>
+            </div>
+
+            <button onclick="bookWithPhysician('Dr. Sophia Chen')" class="btn-3d w-full h-10 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-600 dark:text-cyan-400 font-bold text-xs flex items-center justify-center gap-1.5 transition-colors">
+              <span>Schedule Direct with Dr. Chen</span>
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+    
+
+    <!-- ======================================================================= -->
+    <!-- SECTION 5: THE HEXAGONAL BIO-CELLULAR METAMORPHOSIS REACTOR             -->
+    <!-- Layout: Interlocking 5-Hexagon Molecular Reactor Chain with Active      -->
+    <!-- Biological Mechanism Tracing & Real-Time Cellular Animation              -->
+    <!-- ======================================================================= -->
+    <section id="section-hex-reactor" class="relative py-16 sm:py-24 overflow-hidden">
+      <div class="w-full max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        
+        <!-- Header -->
+        <div class="text-center max-w-3xl mx-auto space-y-3">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-600 dark:text-cyan-400 text-xs font-mono font-bold uppercase tracking-wider">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+            <span>CELLULAR PATHWAY PROTOCOL</span>
+          </div>
+          <h2 class="text-2xl sm:text-4xl font-black text-slate-900 dark:text-white font-display">
+            The Bio-Cellular <span class="text-cyan-500">Metamorphosis Chain</span>
+          </h2>
+          <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400">
+            A closed-loop clinical pathway designed to stimulate autologous growth factors without triggering post-treatment inflammatory rebound.
+          </p>
+        </div>
+
+        <!-- 5 Interlocking Hexagonal Cells Grid -->
+        <div id="hex-reactor-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+          
+          <!-- Hex Cell 1 -->
+          <div class="hex-cell p-5 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-lg space-y-3 relative hover:border-teal-500 transition-all">
+            <div class="flex items-center justify-between">
+              <span class="w-8 h-8 rounded-xl bg-teal-500/10 text-teal-600 dark:text-teal-400 flex items-center justify-center font-display font-black text-xs">01</span>
+              <span class="text-[9px] font-mono text-teal-500 font-bold">OPTICAL BASELINE</span>
+            </div>
+            <h3 class="text-sm font-bold text-slate-900 dark:text-white font-display">VISIA 3D Epigenetic Scan</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              Maps deep sub-surface porphyrins, melanin clusters, and micro-vascular redness across 8 light bands.
+            </p>
+            <div class="pt-1 text-[10px] font-mono text-slate-400">Tolerance Index: 99.8%</div>
+          </div>
+
+          <!-- Hex Cell 2 -->
+          <div class="hex-cell p-5 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-lg space-y-3 relative hover:border-rose-500 transition-all">
+            <div class="flex items-center justify-between">
+              <span class="w-8 h-8 rounded-xl bg-rose-500/10 text-rose-500 flex items-center justify-center font-display font-black text-xs">02</span>
+              <span class="text-[9px] font-mono text-rose-500 font-bold">BARRIER CONDITIONING</span>
+            </div>
+            <h3 class="text-sm font-bold text-slate-900 dark:text-white font-display">Compounded Stratum Prep</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              14-day pre-procedure priming with customized azelaic and lipid bi-layers to prevent PIH melanocyte shock.
+            </p>
+            <div class="pt-1 text-[10px] font-mono text-slate-400">Zero Rebound Risk</div>
+          </div>
+
+          <!-- Hex Cell 3 -->
+          <div class="hex-cell p-5 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-lg space-y-3 relative hover:border-cyan-500 transition-all">
+            <div class="flex items-center justify-between">
+              <span class="w-8 h-8 rounded-xl bg-cyan-500/10 text-cyan-500 flex items-center justify-center font-display font-black text-xs">03</span>
+              <span class="text-[9px] font-mono text-cyan-500 font-bold">LASER INTERVENTION</span>
+            </div>
+            <h3 class="text-sm font-bold text-slate-900 dark:text-white font-display">Pico-Acoustic Shockwave</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              Sub-ablative fractional matrix pulses remodeling scar tissue without thermal injury to surrounding cells.
+            </p>
+            <div class="pt-1 text-[10px] font-mono text-slate-400">Pulse: 450 Picoseconds</div>
+          </div>
+
+          <!-- Hex Cell 4 -->
+          <div class="hex-cell p-5 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-lg space-y-3 relative hover:border-purple-500 transition-all">
+            <div class="flex items-center justify-between">
+              <span class="w-8 h-8 rounded-xl bg-purple-500/10 text-purple-500 flex items-center justify-center font-display font-black text-xs">04</span>
+              <span class="text-[9px] font-mono text-purple-500 font-bold">EXOSOME BIO-INFUSION</span>
+            </div>
+            <h3 class="text-sm font-bold text-slate-900 dark:text-white font-display">5 Billion Growth Vesicles</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              Topical bath of bio-identical exosomes paired with cryo-LED calming to trigger rapid epidermal mitosis.
+            </p>
+            <div class="pt-1 text-[10px] font-mono text-slate-400">3x Healing Velocity</div>
+          </div>
+
+          <!-- Hex Cell 5 -->
+          <div class="hex-cell p-5 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-lg space-y-3 relative hover:border-emerald-500 transition-all">
+            <div class="flex items-center justify-between">
+              <span class="w-8 h-8 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center font-display font-black text-xs">05</span>
+              <span class="text-[9px] font-mono text-emerald-500 font-bold">DERM-TRACK APP</span>
+            </div>
+            <h3 class="text-sm font-bold text-slate-900 dark:text-white font-display">AI Dermal Telemetry</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              Quarterly clinical check-ins, computerized UV exposure logs, and annual collagen preservation maintenance.
+            </p>
+            <div class="pt-1 text-[10px] font-mono text-slate-400">Lifelong Radiance</div>
+          </div>
+
+        </div>
+
+        <!-- Integrated Cellular Journey Visual Banner -->
+        <div class="relative rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-2xl">
+          <div class="w-full h-44 sm:h-56 relative">
+            <img src="images/derma_cellular_journey.jpg" alt="Cellular Regeneration Journey" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-r from-slate-950/85 via-slate-950/60 to-transparent flex items-center p-6 sm:p-10 text-white">
+              <div class="max-w-xl space-y-2">
+                <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-teal-500 text-slate-950">BIOLOGICAL PRECISION</span>
+                <h4 class="text-lg sm:text-xl font-bold font-display">Every Skin Phototype Has Its Own Biological Code.</h4>
+                <p class="text-xs text-slate-300">We do not believe in one-size-fits-all treatments. Your journey is mapped by double-boarded dermatologists.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+    
+
+    <!-- ======================================================================= -->
+    <!-- SECTION 6: CLEANROOM AIR-LOCK TERMINAL & VIP DERMAL CONCIERGE SUITE     -->
+    <!-- Layout: Institutional Cleanroom Telemetry Sensors + Instant Direct      -->
+    <!-- Reservation Cockpit with Verified Physician Selection                   -->
+    <!-- ======================================================================= -->
+    <section id="section-cleanroom-booking" class="relative py-16 sm:py-24 bg-slate-50/80 dark:bg-[#060b17] border-t border-slate-200/90 dark:border-slate-800">
+      <div class="w-full max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+        
+        <!-- Cleanroom Live Environmental Sensors Bar -->
+        <div class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl space-y-6">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100 dark:border-slate-800">
+            <div class="flex items-center gap-3">
+              <span class="w-3 h-3 rounded-full bg-teal-500 animate-ping"></span>
+              <h3 class="text-base sm:text-lg font-bold text-slate-900 dark:text-white font-display">
+                Institutional Safety &amp; Cleanroom Air-Lock Accreditations
+              </h3>
+            </div>
+            <span class="text-xs font-mono font-bold text-slate-400">JCI Ambulatory Quality Standard #JCI-88</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-700/60 space-y-1.5 font-mono text-xs">
+              <span class="text-[10px] text-teal-600 dark:text-teal-400 font-bold uppercase">AIR PARTICULATE SENSOR</span>
+              <p class="text-lg font-black text-slate-900 dark:text-white font-display">0.00 PPM</p>
+              <p class="text-[10px] text-slate-400">Class-100 Positive Pressure HEPA</p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-700/60 space-y-1.5 font-mono text-xs">
+              <span class="text-[10px] text-rose-500 font-bold uppercase">TOXIN CUSTODY VERIFIED</span>
+              <p class="text-lg font-black text-slate-900 dark:text-white font-display">100% UNSEALED</p>
+              <p class="text-[10px] text-slate-400">Allergan/Galderma Lot # Opened Live</p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-700/60 space-y-1.5 font-mono text-xs">
+              <span class="text-[10px] text-cyan-500 font-bold uppercase">AUTOCLAVE SPORE TEST</span>
+              <p class="text-lg font-black text-slate-900 dark:text-white font-display">PASSED 134°C</p>
+              <p class="text-[10px] text-slate-400">Biological Indicator Log Verified</p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-700/60 space-y-1.5 font-mono text-xs">
+              <span class="text-[10px] text-amber-500 font-bold uppercase">DEVICE AUTHENTICITY</span>
+              <p class="text-lg font-black text-slate-900 dark:text-white font-display">FDA 510(K)</p>
+              <p class="text-[10px] text-slate-400">Direct Manufacturer Laser Optics</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- VIP Dermal Concierge Reservation Cockpit -->
+        <div id="cleanroom-terminal" class="rounded-3xl p-6 sm:p-10 lg:p-12 bg-gradient-to-br from-slate-900 via-[#071324] to-slate-950 border-2 border-teal-500/40 shadow-2xl text-white">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            
+            <!-- Left Info & VIP Promises -->
+            <div class="lg:col-span-6 space-y-5">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-500 text-slate-950 font-black text-xs uppercase tracking-wider shadow">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                <span>PRIVATE AMBULATORY SUITE</span>
+              </div>
+              <h3 class="text-2xl sm:text-4xl font-black font-display text-white">
+                Reserve Your Private <span class="text-teal-400">Clinical Evaluation</span>
+              </h3>
+              <p class="text-sm text-slate-300 leading-relaxed">
+                Experience world-class dermatological diagnostics. Every initial consultation includes a complete 3D VISIA multi-spectral skin scan and personalized therapeutic prescription.
+              </p>
+              
+              <div class="space-y-2 pt-2 text-xs text-slate-300">
+                <div class="flex items-center gap-2">
+                  <svg class="w-4 h-4 text-teal-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                  <span>Private entrance and confidential recovery lounge</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <svg class="w-4 h-4 text-teal-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                  <span>Complimentary Valet Parking with direct private clinical elevator</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <svg class="w-4 h-4 text-teal-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                  <span>HIPAA 256-Bit Encrypted Medical Records Vault</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Interactive Reservation Terminal -->
+            <div class="lg:col-span-6 bg-slate-900/95 border border-slate-700/80 p-6 sm:p-7 rounded-2xl space-y-4 shadow-2xl">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div class="space-y-1">
+                  <label class="text-[11px] font-bold text-slate-300">Patient Full Name</label>
+                  <input type="text" id="terminal-name" placeholder="e.g. Katherine Pierce" class="w-full h-10 px-3 rounded-xl bg-slate-800 border border-slate-700 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-teal-400">
+                </div>
+                <div class="space-y-1">
+                  <label class="text-[11px] font-bold text-slate-300">Direct Phone</label>
+                  <input type="tel" id="terminal-phone" placeholder="e.g. +1 (310) 555-0192" class="w-full h-10 px-3 rounded-xl bg-slate-800 border border-slate-700 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-teal-400">
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div class="space-y-1">
+                  <label class="text-[11px] font-bold text-slate-300">Attending Specialist</label>
+                  <select id="terminal-doctor" class="w-full h-10 px-3 rounded-xl bg-slate-800 border border-slate-700 text-xs text-white focus:outline-none focus:border-teal-400">
+                    <option value="Dr. Elena Vance">Dr. Elena Vance, MD (Laser &amp; Melasma)</option>
+                    <option value="Dr. Marcus Sterling">Dr. Marcus Sterling, MD (Injectables)</option>
+                    <option value="Dr. Sophia Chen">Dr. Sophia Chen, PhD (Exosomes &amp; Acne)</option>
+                    <option value="First Available">First Available Senior Fellow</option>
+                  </select>
+                </div>
+                <div class="space-y-1">
+                  <label class="text-[11px] font-bold text-slate-300">Procedure Category</label>
+                  <select id="terminal-service" class="w-full h-10 px-3 rounded-xl bg-slate-800 border border-slate-700 text-xs text-white focus:outline-none focus:border-teal-400">
+                    <option value="Complete VISIA Consultation">Comprehensive VISIA 3D Scan &amp; Consult</option>
+                    <option value="PicoSure Laser Resurfacing">PicoSure 755nm / 1064nm Laser Suite</option>
+                    <option value="Structural Biostimulators">Sculptra / Structural Biostimulators</option>
+                    <option value="Exosome Cellular Biotherapy">5-Billion Exosome Regenerative Infusion</option>
+                  </select>
+                </div>
+              </div>
+
+              <button onclick="submitDermaAppointment()" class="btn-3d w-full h-11 rounded-xl bg-gradient-to-r from-teal-500 via-cyan-400 to-rose-400 hover:from-teal-400 hover:to-rose-300 text-slate-950 font-black text-xs flex items-center justify-center gap-2 shadow-lg shadow-teal-500/30">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <span>Authorize VIP Concierge Reservation</span>
+              </button>
+
+              <p class="text-[10px] text-center text-slate-400 font-mono">
+                Encrypted with 256-bit HIPAA compliant clinical security. Zero promotional spam.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+    
+  </main>
+
+<footer class="w-full max-w-[1500px] mx-auto mt-10 sm:mt-14 mb-8 rounded-3xl bg-white/95 dark:bg-[#0c1222]/95 backdrop-blur-2xl border border-slate-200/90 dark:border-slate-800/90 shadow-2xl shadow-slate-900/5 dark:shadow-black/50 p-4 sm:p-8 lg:p-12 transition-all duration-300" aria-label="Footer Navigation">
+    
+    <!-- 4 MAIN COLUMNS GRID (EXACTLY MATCHING USER REFERENCE IMAGE) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10">
+
+      <!-- ===================================================================== -->
+      <!-- COLUMN 1: BRAND LOGO, DESCRIPTION, 2 CERTIFICATION BADGES, SOCIALS   -->
+      <!-- ===================================================================== -->
+      <div class="lg:col-span-4 space-y-5">
+        
+        <!-- Brand Header Matching Navbar 3D Emblem -->
+        <div class="flex items-center space-x-2.5 rtl:space-x-reverse">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 via-brand-600 to-cyan-500 shadow-3d-blue flex items-center justify-center text-white border-t border-white/35 flex-shrink-0">
+            <svg class="w-5.5 h-5.5 overflow-visible" viewBox="0 0 48 48" fill="none">
+              <circle cx="24" cy="24" r="18" stroke="#38bdf8" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="80 30" opacity="0.85"/>
+              <line x1="24" y1="24" x2="33" y2="15" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+              <circle cx="24" cy="24" r="3" fill="#38bdf8"/>
+              <path d="M10 28C11 26 13 24 16 23.5L21 21C23 20 26 20 28.5 21L34 23.5C36.5 24.5 38 26.5 39 28H10Z" fill="#ffffff" opacity="0.95"/>
+              <path d="M16.5 23.5L20.5 17.5C21.5 16 23 15.5 25 15.5H29C31 15.5 32.5 16.5 33.5 18L35.5 23.5H16.5Z" fill="#38bdf8" opacity="0.95"/>
+              <circle cx="16" cy="29" r="4.5" fill="#0b1121" stroke="#38bdf8" stroke-width="1.8"/>
+              <circle cx="33" cy="29" r="4.5" fill="#0b1121" stroke="#38bdf8" stroke-width="1.8"/>
+              <circle cx="16" cy="29" r="1.8" fill="#ffffff"/>
+              <circle cx="33" cy="29" r="1.8" fill="#ffffff"/>
+              <path d="M8 35C14 36.5 34 36.5 40 35" stroke="#38bdf8" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <div class="flex items-center space-x-1.5 rtl:space-x-reverse">
+              <span class="font-display font-black text-base text-slate-900 dark:text-white tracking-tight">AUTO<span class="text-brand-600 dark:text-cyan-400">NEXUS</span></span>
+              <span class="px-2 py-0.5 rounded-full text-[9px] font-extrabold uppercase tracking-wide bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-500/25">Marketplace</span>
+            </div>
+            <div class="text-[8px] uppercase tracking-[0.2em] font-extrabold text-slate-400 dark:text-slate-500">USED CAR MARKETPLACE & CERTIFIED AUTO</div>
+          </div>
+        </div>
+
+        <!-- Description Paragraph -->
+        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed font-normal">
+          AutoNexus is the premier certified pre-owned automotive marketplace. Experience AI valuation, 250-point certified inspections, direct seller financing, and guaranteed 7-day money-back peace of mind.
+        </p>
+
+        <!-- 2 Trust Badges: Stacks on ultra-small mobile, 2-cols on >=sm -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+          <!-- Card 1: 250-Point Inspected -->
+          <div class="p-2.5 rounded-2xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800 flex items-center space-x-2.5 rtl:space-x-reverse transition-colors">
+            <div class="w-8 h-8 rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center flex-shrink-0 border border-amber-500/20">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            </div>
+            <div class="min-w-0">
+              <div class="text-[11px] font-bold text-slate-800 dark:text-slate-100 truncate">250-Pt Inspected</div>
+              <div class="text-[9.5px] text-slate-400 font-medium truncate">ASE Technicians</div>
+            </div>
+          </div>
+
+          <!-- Card 2: CARFAX Verified -->
+          <div class="p-2.5 rounded-2xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800 flex items-center space-x-2.5 rtl:space-x-reverse transition-colors">
+            <div class="w-8 h-8 rounded-xl bg-cyan-500/10 text-cyan-500 flex items-center justify-center flex-shrink-0 border border-cyan-500/20">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            </div>
+            <div class="min-w-0">
+              <div class="text-[11px] font-bold text-slate-800 dark:text-slate-100 truncate">CARFAX Verified</div>
+              <div class="text-[9.5px] text-slate-400 font-medium truncate">Clean Title Guarantee</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Social Icons Row (Matching "FOLLOW THE CLINIC" in Reference Image) -->
+        <div class="space-y-2">
+          <span class="text-[10px] font-extrabold uppercase tracking-widest text-slate-400 dark:text-slate-500 block">FOLLOW THE MARKETPLACE</span>
+          <div class="flex items-center space-x-2 rtl:space-x-reverse">
+            <a href="#instagram" class="btn-3d btn-3d-toggle w-8 h-8 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 flex items-center justify-center hover:text-brand-600 dark:hover:text-cyan-400 transition-colors" aria-label="Instagram">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5" ry="5" stroke-width="2"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"/></svg>
+            </a>
+            <a href="#youtube" class="btn-3d btn-3d-toggle w-8 h-8 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 flex items-center justify-center hover:text-brand-600 dark:hover:text-cyan-400 transition-colors" aria-label="YouTube">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.33z"/><polygon fill="currentColor" points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
+            </a>
+            <a href="#facebook" class="btn-3d btn-3d-toggle w-8 h-8 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 flex items-center justify-center hover:text-brand-600 dark:hover:text-cyan-400 transition-colors" aria-label="Facebook">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            </a>
+            <a href="#linkedin" class="btn-3d btn-3d-toggle w-8 h-8 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 flex items-center justify-center hover:text-brand-600 dark:hover:text-cyan-400 transition-colors" aria-label="LinkedIn">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2" stroke-width="2"/></svg>
+            </a>
+            <a href="#x" class="btn-3d btn-3d-toggle w-8 h-8 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 flex items-center justify-center hover:text-brand-600 dark:hover:text-cyan-400 transition-colors" aria-label="X (Twitter)">
+              <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ===================================================================== -->
+      <!-- COLUMN 2: EXPLORE MARKETPLACE (MATCHING COLUMN 2 IN REFERENCE IMAGE) -->
+      <!-- ===================================================================== -->
+      <div class="lg:col-span-3 space-y-4">
+        <h4 class="text-xs font-black uppercase tracking-wider text-slate-900 dark:text-white flex items-center space-x-1.5 rtl:space-x-reverse">
+          <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+          <span>EXPLORE AUTONEXUS</span>
+        </h4>
+
+        <ul class="space-y-2 text-xs text-slate-600 dark:text-slate-300 font-medium">
+          <!-- Home with sublinks -->
+          <li class="space-y-1">
+            <a href="index.html" class="flex items-center space-x-1.5 rtl:space-x-reverse font-semibold hover:text-brand-600 dark:hover:text-cyan-400 transition-colors group">
+              <span class="text-slate-400 group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5 transition-transform">›</span>
+              <span>Home (Certified & Fleet)</span>
+            </a>
+            <ul class="pl-3 rtl:pl-0 rtl:pr-3 space-y-1 text-[11px] text-slate-500 dark:text-slate-400 border-l rtl:border-l-0 rtl:border-r border-slate-200 dark:border-slate-800 ml-1.5 rtl:ml-0 rtl:mr-1.5">
+              <li><a href="index.html" class="hover:text-brand-600 dark:hover:text-cyan-400 transition-colors flex items-center space-x-1.5 rtl:space-x-reverse"><span>•</span> <span>Home 1 (Certified Pre-Owned)</span></a></li>
+              <li><a href="home-2.html" class="hover:text-brand-600 dark:hover:text-cyan-400 transition-colors flex items-center space-x-1.5 rtl:space-x-reverse"><span>•</span> <span>Home 2 (Luxury & Performance)</span></a></li>
+            </ul>
+          </li>
+
+          <li>
+            <a href="about.html" class="flex items-center space-x-1.5 rtl:space-x-reverse hover:text-brand-600 dark:hover:text-cyan-400 transition-colors group">
+              <span class="text-slate-400 group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5 transition-transform">›</span>
+              <span>About Us</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="buy-cars.html" class="flex items-center space-x-1.5 rtl:space-x-reverse hover:text-brand-600 dark:hover:text-cyan-400 transition-colors group">
+              <span class="text-slate-400 group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5 transition-transform">›</span>
+              <span>Buy Cars</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="car-details.html" class="flex items-center space-x-1.5 rtl:space-x-reverse hover:text-brand-600 dark:hover:text-cyan-400 transition-colors group">
+              <span class="text-slate-400 group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5 transition-transform">›</span>
+              <span>Car Details</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="sell-your-car.html" class="flex items-center space-x-1.5 rtl:space-x-reverse hover:text-amber-500 transition-colors group">
+              <span class="text-amber-500 group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5 transition-transform">›</span>
+              <span class="font-bold text-amber-600 dark:text-amber-400">Sell Your Car (Instant Cash)</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="inspection.html" class="flex items-center space-x-1.5 rtl:space-x-reverse hover:text-brand-600 dark:hover:text-cyan-400 transition-colors group">
+              <span class="text-slate-400 group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5 transition-transform">›</span>
+              <span>Inspection & 250-Pt Report</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="financing.html" class="flex items-center space-x-1.5 rtl:space-x-reverse hover:text-brand-600 dark:hover:text-cyan-400 transition-colors group">
+              <span class="text-slate-400 group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5 transition-transform">›</span>
+              <span>Instant Financing & EMI</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="faq.html" class="flex items-center space-x-1.5 rtl:space-x-reverse hover:text-brand-600 dark:hover:text-cyan-400 transition-colors group">
+              <span class="text-slate-400 group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5 transition-transform">›</span>
+              <span>FAQs & Buyer Protection</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="contact.html" class="flex items-center space-x-1.5 rtl:space-x-reverse hover:text-brand-600 dark:hover:text-cyan-400 transition-colors group">
+              <span class="text-slate-400 group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5 transition-transform">›</span>
+              <span>Contact Support</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- ===================================================================== -->
+      <!-- COLUMN 3: INVENTORY & SERVICES (MATCHING COLUMN 3 IN REFERENCE IMAGE)-->
+      <!-- ===================================================================== -->
+      <div class="lg:col-span-2 space-y-4">
+        <h4 class="text-xs font-black uppercase tracking-wider text-slate-900 dark:text-white flex items-center space-x-1.5 rtl:space-x-reverse">
+          <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+          <span>FLEET & SERVICES</span>
+        </h4>
+
+        <ul class="space-y-2.5 text-xs text-slate-600 dark:text-slate-300 font-medium">
+          <li>
+            <a href="#sedans" class="flex items-center space-x-2 rtl:space-x-reverse hover:text-brand-600 dark:hover:text-cyan-400 transition-colors group">
+              <span class="text-emerald-500 flex-shrink-0">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </span>
+              <span>Certified Sedans</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#suvs" class="flex items-center space-x-2 rtl:space-x-reverse hover:text-brand-600 dark:hover:text-cyan-400 transition-colors group">
+              <span class="text-amber-500 flex-shrink-0">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+              </span>
+              <span>Luxury SUVs & 4x4</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#electric" class="flex items-center space-x-2 rtl:space-x-reverse hover:text-brand-600 dark:hover:text-cyan-400 transition-colors group">
+              <span class="text-cyan-400 flex-shrink-0">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+              </span>
+              <span>Electric & Hybrids</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#trucks" class="flex items-center space-x-2 rtl:space-x-reverse hover:text-brand-600 dark:hover:text-cyan-400 transition-colors group">
+              <span class="text-blue-500 flex-shrink-0">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+              </span>
+              <span>Heavy Pickups</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#sports" class="flex items-center space-x-2 rtl:space-x-reverse hover:text-brand-600 dark:hover:text-cyan-400 transition-colors group">
+              <span class="text-rose-500 flex-shrink-0">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/></svg>
+              </span>
+              <span>Sports & Coupe</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#valuation" class="flex items-center space-x-2 rtl:space-x-reverse hover:text-brand-600 dark:hover:text-cyan-400 transition-colors group">
+              <span class="text-purple-500 flex-shrink-0">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+              </span>
+              <span>AI Trade-in Tool</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#warranty" class="flex items-center space-x-2 rtl:space-x-reverse hover:text-brand-600 dark:hover:text-cyan-400 transition-colors group">
+              <span class="text-teal-500 flex-shrink-0">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+              </span>
+              <span>Extended Warranty</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#delivery" class="flex items-center space-x-2 rtl:space-x-reverse hover:text-brand-600 dark:hover:text-cyan-400 transition-colors group">
+              <span class="text-amber-400 flex-shrink-0">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/></svg>
+              </span>
+              <span>48h Door Delivery</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- ===================================================================== -->
+      <!-- COLUMN 4: PORTALS & NEWSLETTER (MATCHING COLUMN 4 IN REFERENCE IMAGE)-->
+      <!-- ===================================================================== -->
+      <div class="lg:col-span-3 space-y-4">
+        <h4 class="text-xs font-black uppercase tracking-wider text-slate-900 dark:text-white flex items-center space-x-1.5 rtl:space-x-reverse">
+          <span class="w-1.5 h-1.5 rounded-full bg-brand-500"></span>
+          <span>PORTALS & NEWSLETTER</span>
+        </h4>
+
+        <!-- 2 Large Tactile Portal Cards (Matching Top Buttons in Reference Image) -->
+        <div class="space-y-2.5">
+          <!-- User Dashboard Button Card -->
+          <a href="user-dashboard.html" class="btn-3d btn-3d-toggle p-3 rounded-2xl bg-white dark:bg-slate-900/90 border border-slate-200/90 dark:border-slate-800 flex items-center justify-between group transition-all cursor-pointer">
+            <div class="flex items-center space-x-3 rtl:space-x-reverse">
+              <div class="w-8 h-8 rounded-xl bg-blue-500/10 text-brand-600 dark:text-cyan-400 flex items-center justify-center flex-shrink-0 border border-blue-500/20">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+              </div>
+              <div class="text-left rtl:text-right">
+                <div class="text-xs font-bold text-slate-800 dark:text-white group-hover:text-brand-600 dark:group-hover:text-cyan-400 transition-colors">User Dashboard</div>
+                <div class="text-[10px] text-slate-400 font-medium">Saved Fleet & Garage</div>
+              </div>
+            </div>
+            <svg class="w-4 h-4 text-slate-400 group-hover:text-brand-600 dark:group-hover:text-cyan-400 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </a>
+
+          <!-- Admin Dashboard Button Card -->
+          <a href="admin-dashboard.html" class="btn-3d btn-3d-toggle p-3 rounded-2xl bg-white dark:bg-slate-900/90 border border-slate-200/90 dark:border-slate-800 flex items-center justify-between group transition-all cursor-pointer">
+            <div class="flex items-center space-x-3 rtl:space-x-reverse">
+              <div class="w-8 h-8 rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center flex-shrink-0 border border-amber-500/20">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+              </div>
+              <div class="text-left rtl:text-right">
+                <div class="text-xs font-bold text-slate-800 dark:text-white group-hover:text-amber-500 transition-colors">Admin Dashboard</div>
+                <div class="text-[10px] text-slate-400 font-medium">Dealer CRM & Valuation</div>
+              </div>
+            </div>
+            <svg class="w-4 h-4 text-slate-400 group-hover:text-amber-500 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <!-- Newsletter Subscription Box (Matching Bottom Box in Reference Image) -->
+        <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800 space-y-2.5">
+          <div>
+            <h5 class="text-xs font-bold text-slate-900 dark:text-white flex items-center space-x-1 rtl:space-x-reverse">
+              <span>Join AutoNexus Family!</span>
+              <svg class="w-3.5 h-3.5 text-amber-400 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.286L13 21l-2.286-6.857L5 12l5.714-2.286L13 3z"/></svg>
+            </h5>
+            <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
+              Get free vehicle market guides and $250 voucher off your purchase.
+            </p>
+          </div>
+
+          <form id="footer-newsletter-form" class="space-y-2" onsubmit="event.preventDefault(); handleNewsletter();">
+            <input 
+              id="newsletter-email" 
+              type="email" 
+              required 
+              placeholder="buyer@email.com" 
+              class="w-full px-3 py-2 rounded-xl bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-700 text-xs text-slate-800 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all"
+            />
+            <button 
+              type="submit" 
+              class="btn-3d btn-3d-accent w-full py-2.5 rounded-xl text-slate-950 font-bold text-xs flex items-center justify-center space-x-1.5 rtl:space-x-reverse cursor-pointer shadow-3d-amber border-t border-white/40 focus:outline-none"
+            >
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
+              <span>Subscribe</span>
+            </button>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ========================================================================= -->
+  <!-- JAVASCRIPT: FRAMER MOTION ANIMATIONS, 3D INTERACTIVITY, DARK & RTL        -->
+  <!-- ========================================================================= -->
+  <script>
+    // --- 1. Audio Haptic Click Synthesizer (Native Web Audio API) ---
+    let soundEnabled = true;
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    function playClickSound() {
+      if (!soundEnabled) return;
+      try {
+        if (audioCtx.state === 'suspended') {
+          audioCtx.resume();
+        }
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(420, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(120, audioCtx.currentTime + 0.05);
+        gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.05);
+      } catch (e) {
+        // Safe failover if browser policy suppresses audio
+      }
+    }
+
+    document.querySelectorAll('.btn-3d').forEach(btn => {
+      btn.addEventListener('click', playClickSound);
+    });
+
+    // --- 2. Framer Motion Dynamic Logo Animations ---
+    const logoContainer = document.querySelector('.logo-container');
+    const logoBadge = document.getElementById('logo-badge');
+    const logoNeedle = document.getElementById('logo-needle-group');
+    const logoWheelFront = document.getElementById('logo-wheel-front');
+    const logoWheelBack = document.getElementById('logo-wheel-back');
+    const logoCarBody = document.getElementById('logo-car-body');
+    const logoBadge360 = document.getElementById('logo-badge-360');
+    const logoHeadlight = document.getElementById('logo-headlight');
+    const logoGlowHalo = document.getElementById('logo-glow-halo');
+    const drawerLogo = document.getElementById('drawer-logo');
+
+    // A. Initial Page Load Spring Entrance (Framer Motion)
+    if (window.Motion && window.Motion.animate) {
+      if (logoBadge) {
+        window.Motion.animate(logoBadge, {
+          scale: [0.75, 1.08, 1],
+          rotate: [-10, 4, 0],
+          opacity: [0, 1]
+        }, {
+          type: 'spring',
+          stiffness: 350,
+          damping: 20,
+          delay: 0.1
+        });
+      }
+
+      // Initial throttle rev
+      if (logoNeedle) {
+        window.Motion.animate(logoNeedle, {
+          rotate: [0, 55, 20, 40, 0]
+        }, {
+          duration: 1.1,
+          delay: 0.35,
+          easing: [0.16, 1, 0.3, 1]
+        });
+      }
+
+      // 360 Badge Pop
+      if (logoBadge360) {
+        window.Motion.animate(logoBadge360, {
+          scale: [0, 1.3, 1],
+          rotate: [180, 0]
+        }, {
+          type: 'spring',
+          stiffness: 400,
+          damping: 18,
+          delay: 0.45
+        });
+      }
+    }
+
+    // B. Interactive Hover Engine Rev, Wheel Spin & 3D Tilt
+    if (logoContainer) {
+      logoContainer.addEventListener('mouseenter', () => {
+        if (window.Motion && window.Motion.animate) {
+          if (logoBadge) {
+            window.Motion.animate(logoBadge, {
+              scale: 1.1,
+              rotate: [0, -3, 3, 0],
+              y: -2
+            }, {
+              type: 'spring',
+              stiffness: 420,
+              damping: 20
+            });
+          }
+
+          if (logoNeedle) {
+            window.Motion.animate(logoNeedle, {
+              rotate: [0, 70, 45, 62]
+            }, {
+              duration: 0.5,
+              easing: [0.34, 1.56, 0.64, 1]
+            });
+          }
+
+          if (logoWheelFront && logoWheelBack) {
+            window.Motion.animate([logoWheelFront, logoWheelBack], {
+              rotate: [0, 720]
+            }, {
+              duration: 0.75,
+              easing: [0.2, 0.8, 0.2, 1]
+            });
+          }
+
+          if (logoCarBody) {
+            window.Motion.animate(logoCarBody, {
+              x: [0, 2.5, 0],
+              y: [0, -0.8, 0]
+            }, {
+              duration: 0.4
+            });
+          }
+
+          if (logoBadge360) {
+            window.Motion.animate(logoBadge360, {
+              rotate: [0, 360],
+              scale: [1, 1.3, 1]
+            }, {
+              duration: 0.55,
+              type: 'spring',
+              stiffness: 350
+            });
+          }
+
+          if (logoHeadlight) {
+            window.Motion.animate(logoHeadlight, {
+              opacity: [0.15, 1, 0.9],
+              scaleX: [0.4, 1.4, 1.15]
+            }, {
+              duration: 0.35
+            });
+          }
+
+          if (logoGlowHalo) {
+            window.Motion.animate(logoGlowHalo, {
+              scale: [1, 1.25, 1.1],
+              opacity: [0.4, 0.9, 0.8]
+            }, {
+              duration: 0.4
+            });
+          }
+        }
+      });
+
+      logoContainer.addEventListener('mouseleave', () => {
+        if (window.Motion && window.Motion.animate) {
+          if (logoBadge) {
+            window.Motion.animate(logoBadge, {
+              scale: 1,
+              rotate: 0,
+              y: 0,
+              transform: 'perspective(600px) rotateX(0deg) rotateY(0deg) scale(1)'
+            }, {
+              type: 'spring',
+              stiffness: 400,
+              damping: 28
+            });
+          }
+
+          if (logoNeedle) {
+            window.Motion.animate(logoNeedle, {
+              rotate: 0
+            }, {
+              type: 'spring',
+              stiffness: 320,
+              damping: 24
+            });
+          }
+
+          if (logoHeadlight) {
+            window.Motion.animate(logoHeadlight, {
+              opacity: 0.15,
+              scaleX: 0.4
+            }, {
+              duration: 0.3
+            });
+          }
+
+          if (logoGlowHalo) {
+            window.Motion.animate(logoGlowHalo, {
+              scale: 1,
+              opacity: 0.4
+            }, {
+              duration: 0.3
+            });
+          }
+        }
+      });
+
+      // C. 3D Magnetic Parallax Follow on Mouse Move
+      logoContainer.addEventListener('mousemove', (e) => {
+        if (!logoBadge) return;
+        const rect = logoBadge.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        const rotateX = (-y / 6).toFixed(2);
+        const rotateY = (x / 6).toFixed(2);
+
+        if (window.Motion && window.Motion.animate) {
+          window.Motion.animate(logoBadge, {
+            transform: `perspective(600px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.1) translateY(-2px)`
+          }, { duration: 0.08 });
+        }
+      });
+    }
+
+    // D. Drawer Mini Logo Spring Tap Feedback
+    if (drawerLogo) {
+      drawerLogo.addEventListener('click', () => {
+        if (window.Motion && window.Motion.animate) {
+          window.Motion.animate(drawerLogo, {
+            scale: [1, 0.92, 1.06, 1],
+            rotate: [0, -4, 4, 0]
+          }, { duration: 0.35 });
+        }
+      });
+    }
+
+        // --- 3. Framer Motion Floating Active Pill (Desktop Center Navbar) ---
+    const desktopNav = document.getElementById('desktop-nav');
+    const navIndicator = document.getElementById('nav-indicator');
+    const navItems = desktopNav.querySelectorAll('.nav-item');
+
+    function positionIndicator(target, animate = true) {
+      if (!target || !navIndicator || !desktopNav) return;
+      const rect = target.getBoundingClientRect();
+      const parentRect = desktopNav.getBoundingClientRect();
+
+      const x = rect.left - parentRect.left;
+      const y = rect.top - parentRect.top;
+      const width = rect.width;
+      const height = rect.height;
+
+      navIndicator.style.opacity = '1';
+      navIndicator.style.width = `${width}px`;
+      navIndicator.style.height = `${height}px`;
+
+      if (animate && window.Motion && window.Motion.animate) {
+        window.Motion.animate(navIndicator, {
+          transform: `translate(${x}px, ${y}px)`
+        }, {
+          type: 'spring',
+          stiffness: 450,
+          damping: 32
+        });
+      } else {
+        navIndicator.style.transform = `translate(${x}px, ${y}px)`;
+      }
+    }
+
+    navItems.forEach(item => {
+      item.addEventListener('mouseenter', (e) => {
+        positionIndicator(e.currentTarget, true);
+      });
+    });
+
+    desktopNav.addEventListener('mouseleave', () => {
+      const activeItem = desktopNav.querySelector('.nav-item.nav-item-active');
+      if (activeItem) {
+        positionIndicator(activeItem, true);
+      } else {
+        navIndicator.style.opacity = '0';
+      }
+    });
+
+    // --- 3B. Automated Navbar Active Status Router & Highlighting ---
+    function syncActiveNavState() {
+      var currentPath = window.location.pathname.split('/').pop().toLowerCase();
+      if (!currentPath || currentPath === '' || currentPath === '/') {
+        currentPath = 'index.html';
+      }
+
+      var routeMap = {
+        'index.html': { key: 'home-1', parent: 'home' },
+        'home-2.html': { key: 'home-2', parent: 'home' },
+        'about.html': { key: 'about', parent: null },
+        'buy-cars.html': { key: 'buy-cars', parent: null },
+        'car-details.html': { key: 'car-details', parent: null },
+        'sell-your-car.html': { key: 'sell-car', parent: null },
+        'inspection.html': { key: 'inspection', parent: null },
+        'financing.html': { key: 'financing', parent: null },
+        'faq.html': { key: 'faq', parent: null },
+        'contact.html': { key: 'contact', parent: null },
+        'admin-dashboard.html': { key: 'admin-dashboard', parent: 'dashboard' },
+        'user-dashboard.html': { key: 'user-dashboard', parent: 'dashboard' }
+      };
+
+      var route = routeMap[currentPath];
+
+      // Remove existing active states from links
+      document.querySelectorAll('.nav-item-active, .dropdown-sublink-active, .mobile-link-active').forEach(function(el) {
+        el.classList.remove('nav-item-active', 'dropdown-sublink-active', 'mobile-link-active');
+      });
+
+      // Highlight all matching links across desktop and mobile
+      var matchingLinks = document.querySelectorAll('a[href="' + currentPath + '"], a[href="./' + currentPath + '"]');
+      matchingLinks.forEach(function(link) {
+        if (link.classList.contains('nav-item')) {
+          link.classList.add('nav-item-active');
+          if (currentPath === 'sell-your-car.html') link.classList.add('nav-item-sell');
+        } else if (link.classList.contains('mobile-link')) {
+          link.classList.add('mobile-link-active');
+          if (currentPath === 'sell-your-car.html') link.classList.add('mobile-link-sell');
+        } else if (link.classList.contains('mobile-sublink')) {
+          link.classList.add('mobile-link-active');
+        } else if (link.closest('.dropdown-menu')) {
+          link.classList.add('dropdown-sublink-active');
+        }
+      });
+
+      // Highlight parent dropdown button if on a subpage
+      if (route && route.parent === 'home') {
+        var homeTrigger = document.getElementById('desktop-home-trigger');
+        if (homeTrigger) homeTrigger.classList.add('nav-item-active');
+        var mobileHomeContent = document.getElementById('mobile-home-content');
+        var homeChevron = document.getElementById('home-accordion-chevron');
+        if (mobileHomeContent) {
+          mobileHomeContent.style.maxHeight = mobileHomeContent.scrollHeight + 30 + 'px';
+          mobileHomeContent.classList.remove('pb-0');
+          mobileHomeContent.classList.add('pb-2');
+          if (homeChevron) homeChevron.classList.add('rotate-180');
+        }
+      } else if (route && route.parent === 'dashboard') {
+        var dashTrigger = document.getElementById('desktop-dash-trigger');
+        if (dashTrigger) dashTrigger.classList.add('nav-item-active');
+        var mobileDashContent = document.getElementById('mobile-dash-content');
+        var dashChevron = document.getElementById('dash-accordion-chevron');
+        if (mobileDashContent) {
+          mobileDashContent.style.maxHeight = mobileDashContent.scrollHeight + 30 + 'px';
+          mobileDashContent.classList.remove('pb-0');
+          mobileDashContent.classList.add('pb-2');
+          if (dashChevron) dashChevron.classList.add('rotate-180');
+        }
+      }
+
+      // Initial alignment of Framer Motion hover indicator
+      setTimeout(function() {
+        if (desktopNav) {
+          var activeItem = desktopNav.querySelector('.nav-item.nav-item-active');
+          if (activeItem) {
+            positionIndicator(activeItem, false);
+          }
+        }
+      }, 50);
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', syncActiveNavState);
+    } else {
+      syncActiveNavState();
+    }
+    window.addEventListener('resize', function() {
+      if (desktopNav) {
+        var activeItem = desktopNav.querySelector('.nav-item.nav-item-active');
+        if (activeItem) positionIndicator(activeItem, false);
+      }
+    });
+
+    // --- 4. Dark Mode Toggle Management ---
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    const mobileDarkModeToggle = document.getElementById('mobile-dark-mode-toggle');
+
+    function updateThemeUI(isDark) {
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    }
+
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    updateThemeUI(savedTheme === 'dark');
+
+    function toggleTheme() {
+      const isDark = document.documentElement.classList.toggle('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      updateThemeUI(isDark);
+      playClickSound();
+
+      if (window.Motion && window.Motion.animate) {
+        window.Motion.animate(darkModeToggle, {
+          rotate: [0, -15, 15, 0],
+          scale: [1, 0.9, 1.05, 1]
+        }, { duration: 0.35 });
+      }
+    }
+
+    darkModeToggle.addEventListener('click', toggleTheme);
+    mobileDarkModeToggle.addEventListener('click', toggleTheme);
+
+    // --- 5. Right to Left (RTL) Toggle Management (Only Icon) ---
+    const rtlToggle = document.getElementById('rtl-toggle');
+    const mobileRtlToggle = document.getElementById('mobile-rtl-toggle');
+
+    function updateRtlUI(isRtl) {
+      if (isRtl) {
+        document.documentElement.setAttribute('dir', 'rtl');
+      } else {
+        document.documentElement.setAttribute('dir', 'ltr');
+      }
+    }
+
+    const savedDir = localStorage.getItem('direction') || 'ltr';
+    updateRtlUI(savedDir === 'rtl');
+
+    function toggleDirection() {
+      const currentDir = document.documentElement.getAttribute('dir');
+      const newDir = currentDir === 'rtl' ? 'ltr' : 'rtl';
+      localStorage.setItem('direction', newDir);
+      updateRtlUI(newDir === 'rtl');
+      playClickSound();
+
+      if (window.Motion && window.Motion.animate) {
+        window.Motion.animate(rtlToggle, {
+          scale: [1, 0.92, 1.04, 1]
+        }, { duration: 0.3 });
+      }
+    }
+
+    rtlToggle.addEventListener('click', toggleDirection);
+    mobileRtlToggle.addEventListener('click', toggleDirection);
+
+    // --- 6. Mobile & Tab Drawer Interactivity (Framer Motion style) ---
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const closeDrawerBtn = document.getElementById('close-drawer-btn');
+    const mobileDrawer = document.getElementById('mobile-drawer');
+    const mobileBackdrop = document.getElementById('mobile-backdrop');
+    const hamburgerBars = document.querySelectorAll('.hamburger-bar');
+
+    let isDrawerOpen = false;
+
+    function openDrawer() {
+      isDrawerOpen = true;
+      hamburgerBtn.setAttribute('aria-expanded', 'true');
+      mobileBackdrop.classList.remove('opacity-0', 'pointer-events-none');
+      mobileBackdrop.classList.add('opacity-100', 'pointer-events-auto');
+
+      // Hamburger morphed into 'X'
+      if (hamburgerBars.length >= 3) {
+        hamburgerBars[0].style.transform = 'translateY(7px) rotate(45deg)';
+        hamburgerBars[1].style.opacity = '0';
+        hamburgerBars[2].style.transform = 'translateY(-7px) rotate(-45deg)';
+      }
+
+      const isRtl = document.documentElement.getAttribute('dir') === 'rtl';
+
+      if (window.Motion && window.Motion.animate) {
+        window.Motion.animate(mobileDrawer, {
+          transform: 'translateX(0%)'
+        }, {
+          type: 'spring',
+          stiffness: 380,
+          damping: 32
+        });
+
+        const links = document.querySelectorAll('#mobile-nav-links > *');
+        window.Motion.animate(links, {
+          opacity: [0, 1],
+          transform: [isRtl ? 'translateX(-15px)' : 'translateX(15px)', 'translateX(0px)']
+        }, {
+          delay: window.Motion.stagger(0.035),
+          duration: 0.3
+        });
+      } else {
+        mobileDrawer.style.transform = 'translateX(0%)';
+      }
+    }
+
+    function closeDrawer() {
+      isDrawerOpen = false;
+      hamburgerBtn.setAttribute('aria-expanded', 'false');
+      mobileBackdrop.classList.remove('opacity-100', 'pointer-events-auto');
+      mobileBackdrop.classList.add('opacity-0', 'pointer-events-none');
+
+      // Reset Hamburger bars
+      if (hamburgerBars.length >= 3) {
+        hamburgerBars[0].style.transform = '';
+        hamburgerBars[1].style.opacity = '1';
+        hamburgerBars[2].style.transform = '';
+      }
+
+      const isRtl = document.documentElement.getAttribute('dir') === 'rtl';
+      const exitTranslate = isRtl ? '-100%' : '100%';
+
+      if (window.Motion && window.Motion.animate) {
+        window.Motion.animate(mobileDrawer, {
+          transform: `translateX(${exitTranslate})`
+        }, {
+          type: 'spring',
+          stiffness: 400,
+          damping: 35
+        });
+      } else {
+        mobileDrawer.style.transform = `translateX(${exitTranslate})`;
+      }
+    }
+
+    hamburgerBtn.addEventListener('click', () => {
+      if (isDrawerOpen) {
+        closeDrawer();
+      } else {
+        openDrawer();
+      }
+    });
+
+    closeDrawerBtn.addEventListener('click', closeDrawer);
+    mobileBackdrop.addEventListener('click', closeDrawer);
+
+    document.querySelectorAll('#mobile-drawer a').forEach(a => {
+      a.addEventListener('click', () => {
+        closeDrawer();
+      });
+    });
+
+    // --- 7. Mobile Accordions (Home & Dashboard) ---
+    function setupAccordion(triggerId, contentId, chevronId) {
+      const trigger = document.getElementById(triggerId);
+      const content = document.getElementById(contentId);
+      const chevron = document.getElementById(chevronId);
+      let expanded = false;
+
+      trigger.addEventListener('click', () => {
+        expanded = !expanded;
+        if (expanded) {
+          content.style.maxHeight = content.scrollHeight + 30 + 'px';
+          content.classList.remove('pb-0');
+          content.classList.add('pb-2');
+          chevron.classList.add('rotate-180');
+        } else {
+          content.style.maxHeight = '0px';
+          content.classList.remove('pb-2');
+          content.classList.add('pb-0');
+          chevron.classList.remove('rotate-180');
+        }
+        playClickSound();
+      });
+    }
+
+    setupAccordion('mobile-home-accordion-btn', 'mobile-home-content', 'home-accordion-chevron');
+    setupAccordion('mobile-dash-accordion-btn', 'mobile-dash-content', 'dash-accordion-chevron');
+
+    // --- 8. Login Button Feedback Interaction ---
+    function handleLoginClick() {
+      playClickSound();
+      window.location.href = 'login.html';
+    }
+
+    document.getElementById('login-btn').addEventListener('click', handleLoginClick);
+    document.getElementById('mobile-login-btn').addEventListener('click', handleLoginClick);
+
+    // --- 9. Footer Newsletter Handler ---
+
+    function handleNewsletter() {
+      playClickSound();
+      const emailInput = document.getElementById('newsletter-email');
+      if (emailInput && emailInput.value) {
+        alert('[Success] Welcome to AutoNexus VIP Marketplace Alerts!\n\nYou will receive certified pre-owned price drops & instant valuation updates.');
+        emailInput.value = '';
+      }
+    }
+
+    // --- 10. Keyboard Accessibility (Escape to close drawer) ---
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && isDrawerOpen) {
+        closeDrawer();
+      }
+    });
+  
+    // =========================================================================
+    // FRAMER MOTION SUITE & INTERACTIVE CONTROLLERS FOR HOME-2 DERMATOLOGY CLINIC
+    // Unique animations for all 6 sections + interactive case studies & triage
+    // =========================================================================
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.Motion && window.Motion.animate) {
+        const { animate, inView, spring } = window.Motion;
+
+        // 1. SECTION 1 MOTION: Cellular Micro-Fade & Radial Petal Bloom
+        animate('#derma-hero-content', {
+          opacity: [0, 1],
+          transform: ['translateY(36px) scale(0.96)', 'translateY(0px) scale(1)']
+        }, {
+          duration: 0.9,
+          easing: spring({ stiffness: 210, damping: 20 })
+        });
+
+        animate('#derma-scanner-card', {
+          opacity: [0, 1],
+          transform: ['scale(0.9) rotate(-1deg)', 'scale(1) rotate(0deg)']
+        }, {
+          duration: 1.05,
+          delay: 0.15,
+          easing: spring({ stiffness: 190, damping: 22 })
+        });
+
+        // 2. SECTION 2 MOTION: Prism Dispersion Tilt & Staggered Laser Slice
+        const dermaCards = document.querySelectorAll('.derma-card');
+        if (dermaCards.length > 0) {
+          inView('#derma-specialties-grid', () => {
+            animate(dermaCards, {
+              opacity: [0, 1],
+              transform: ['translateY(40px) rotateX(12deg)', 'translateY(0px) rotateX(0deg)']
+            }, {
+              delay: window.Motion.stagger(0.09, { start: 0.1 }),
+              duration: 0.65,
+              easing: spring({ stiffness: 250, damping: 22 })
+            });
+          });
+        }
+
+        // 3. SECTION 3 MOTION: Curtain Wipe Reveal & Kinetic Magnifier Spring
+        inView('#derma-compare-card', () => {
+          animate('#derma-compare-card', {
+            opacity: [0, 1],
+            transform: ['scale(0.94) translateY(24px)', 'scale(1) translateY(0px)']
+          }, {
+            duration: 0.8,
+            easing: spring({ stiffness: 220, damping: 22 })
+          });
+        });
+
+        // 4. SECTION 4 MOTION: Stethoscope Pulse Wave & 3D Credential Flip
+        const physCards = document.querySelectorAll('.physician-card');
+        if (physCards.length > 0) {
+          inView('#derma-faculty-grid', () => {
+            animate(physCards, {
+              opacity: [0, 1],
+              transform: ['translateY(35px) scale(0.94)', 'translateY(0px) scale(1)']
+            }, {
+              delay: window.Motion.stagger(0.12),
+              duration: 0.7,
+              easing: spring({ stiffness: 240, damping: 20 })
+            });
+          });
+        }
+
+        // 5. SECTION 5 MOTION: Chronological Pipeline Glow & Liquid Wave Progress
+        const stepCards = document.querySelectorAll('.derma-step-card');
+        if (stepCards.length > 0) {
+          inView('#derma-steps-container', () => {
+            animate(stepCards, {
+              opacity: [0, 1],
+              transform: ['translateY(-20px) scale(0.92)', 'translateY(0px) scale(1)']
+            }, {
+              delay: window.Motion.stagger(0.07),
+              duration: 0.55,
+              easing: spring({ stiffness: 280, damping: 22 })
+            });
+          });
+        }
+
+        // 6. SECTION 6 MOTION: Magnetic Elastic Snap & Concentric Gold Halo Ripple
+        inView('#derma-terminal-card', () => {
+          animate('#derma-terminal-card', {
+            opacity: [0, 1],
+            transform: ['scale(0.96) translateY(25px)', 'scale(1) translateY(0px)']
+          }, {
+            duration: 0.85,
+            easing: spring({ stiffness: 210, damping: 22 })
+          });
+        });
+      }
+    });
+
+    // --- Interactive Case Study Switcher ---
+    const caseData = {
+      1: {
+        headline: "Grade IV Cystic Acne & Rolling Scars",
+        patient: "Female, 28 • Fitzpatrick Skin Type III",
+        clearance: "98.4%",
+        title: "Multi-Modal Acne Scar & Erythema Protocol",
+        desc: "Patient presented with recalcitrant inflammatory papules and tethered rolling scars. Protocol combined 4 sessions of PicoSure 755nm with subcision and post-procedure exosome infusions.",
+        sessions: "4 Sessions (3 Wk Interval)",
+        downtime: "< 36 Hours Total",
+        regimen: "Compounded Tretinoin 0.05%",
+        physician: "Dr. Elena Vance, MD"
+      },
+      2: {
+        headline: "Deep Dermal Melasma & Solar Dyschromia",
+        patient: "Female, 39 • Fitzpatrick Skin Type IV",
+        clearance: "96.2%",
+        title: "Sub-Acoustic Melasma & Epidermal Barrier Restoration",
+        desc: "Severe bilateral cheek melasma resistant to hydroquinone. Treated with targeted 1064nm Q-switched laser at sub-inflammatory fluence plus tranexamic exosome micro-infusion.",
+        sessions: "6 Sessions (2 Wk Interval)",
+        downtime: "Zero Downtime",
+        regimen: "Tranexamic 5% + Azelaic 15%",
+        physician: "Dr. Sophia Chen, PhD"
+      },
+      3: {
+        headline: "Lower Face Tissue Laxity & Submental Descent",
+        patient: "Male, 46 • Fitzpatrick Skin Type II",
+        clearance: "+44% Lift",
+        title: "Micro-Focused Ultrasound & Neocollagenesis Protocol",
+        desc: "Patient requested non-surgical jawline restoration. Delivered DeepSEE ultrasound visualization at 4.5mm and 3.0mm depths combined with lateral mandibular Sculptra biostimulation.",
+        sessions: "1 Full Protocol Session",
+        downtime: "< 12 Hours",
+        regimen: "Peptide Complex + SPF 50+",
+        physician: "Dr. Marcus Sterling, MD"
+      }
+    };
+
+    function switchCaseStudy(num) {
+      playClickSound();
+      document.querySelectorAll('.case-study-btn').forEach(btn => {
+        btn.classList.remove('bg-teal-600', 'text-white', 'shadow-md', 'active');
+        btn.classList.add('text-slate-600', 'dark:text-slate-400');
+      });
+      const activeBtn = document.getElementById(`case-btn-${num}`);
+      if (activeBtn) {
+        activeBtn.classList.remove('text-slate-600', 'dark:text-slate-400');
+        activeBtn.classList.add('bg-teal-600', 'text-white', 'shadow-md', 'active');
+      }
+
+      const data = caseData[num];
+      if (data) {
+        document.getElementById('case-headline').textContent = data.headline;
+        document.getElementById('case-patient').textContent = data.patient;
+        document.getElementById('case-clearance').textContent = data.clearance;
+        document.getElementById('case-dossier-title').textContent = data.title;
+        document.getElementById('case-dossier-desc').textContent = data.desc;
+        document.getElementById('case-sessions').textContent = data.sessions;
+        document.getElementById('case-downtime').textContent = data.downtime;
+        document.getElementById('case-regimen').textContent = data.regimen;
+        document.getElementById('case-physician').textContent = data.physician;
+      }
+    }
+
+    // --- Interactive Specialties Filter ---
+    function filterDermaSpecialties(category) {
+      playClickSound();
+      document.querySelectorAll('.derma-spec-tab').forEach(btn => {
+        btn.classList.remove('bg-teal-600', 'text-white', 'shadow-md', 'active');
+        btn.classList.add('bg-white', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
+      });
+      const activeBtn = document.getElementById(`tab-derma-${category}`);
+      if (activeBtn) {
+        activeBtn.classList.remove('bg-white', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
+        activeBtn.classList.add('bg-teal-600', 'text-white', 'shadow-md', 'active');
+      }
+
+      const cards = document.querySelectorAll('.derma-card');
+      cards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // --- Interactive Consultation & Booking Triggers ---
+    function requestDermaConsultation() {
+      playClickSound();
+      const concern = document.getElementById('derma-concern-select').value;
+      const modality = document.getElementById('derma-modality-select').value;
+      alert(`[NexusDerma Concierge] Fast-Track Priority Scan Scheduled!
+
+Target Focus: ${concern.toUpperCase()} | Protocol: ${modality.toUpperCase()}
+
+Our Clinical Coordinator will contact you within 15 minutes to confirm your private suite.`);
+    }
+
+    function openProcedureDossier(procedure) {
+      playClickSound();
+      alert(`[Clinical Dossier] ${procedure}
+
+Protocol: FDA-Cleared, Board-Certified Physician Execution.
+Pre-procedure topical numbing and VISIA 3D baseline diagnostics included.`);
+    }
+
+    function bookWithPhysician(doctor) {
+      playClickSound();
+      const select = document.getElementById('terminal-doctor');
+      if (select) {
+        for (let i = 0; i < select.options.length; i++) {
+          if (select.options[i].text.includes(doctor)) {
+            select.selectedIndex = i;
+            break;
+          }
+        }
+      }
+      document.getElementById('derma-booking-section').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function submitDermaAppointment() {
+      playClickSound();
+      const name = document.getElementById('terminal-name').value || 'Valued Patient';
+      const doctor = document.getElementById('terminal-doctor').value;
+      const service = document.getElementById('terminal-service').value;
+
+      alert(`[VIP Reservation Confirmed] Welcome to NexusDerma Institute, ${name}!
+
+Attending Specialist: ${doctor}
+Procedure: ${service}
+
+An encrypted appointment pass and valet parking QR code have been dispatched to your contact.`);
+    }
+
+    // =========================================================================
+    // FRAMER MOTION SUITE & CONTROLLERS FOR AVANT-GARDE DERMA CLINIC LAYOUT
+    // 6 Radically Unique Viewport Animations & Interactive Modals
+    // =========================================================================
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.Motion && window.Motion.animate) {
+        const { animate, inView, spring } = window.Motion;
+
+        // 1. SECTION 1 MOTION: Concentric Orbital Unfold & Radial Halo Expansion
+        animate('#rotunda-masthead', {
+          opacity: [0, 1],
+          transform: ['scale(0.92) translateY(30px)', 'scale(1) translateY(0px)']
+        }, {
+          duration: 0.85,
+          easing: spring({ stiffness: 220, damping: 20 })
+        });
+
+        animate('.rotunda-pod', {
+          opacity: [0, 1],
+          transform: ['translateY(24px) scale(0.95)', 'translateY(0px) scale(1)']
+        }, {
+          delay: window.Motion.stagger(0.1, { start: 0.15 }),
+          duration: 0.7,
+          easing: spring({ stiffness: 240, damping: 22 })
+        });
+
+        animate('#central-scanner-orb', {
+          opacity: [0, 1],
+          transform: ['scale(0.9) rotate(-1deg)', 'scale(1) rotate(0deg)']
+        }, {
+          duration: 0.95,
+          delay: 0.2,
+          easing: spring({ stiffness: 200, damping: 22 })
+        });
+
+        // 2. SECTION 2 MOTION: Spectrum Wavelength Sweep & Laser Shutter Tilt
+        inView('#section-spectrum-lasers', () => {
+          animate('.wave-pill', {
+            opacity: [0, 1],
+            transform: ['translateY(-15px)', 'translateY(0px)']
+          }, {
+            delay: window.Motion.stagger(0.06),
+            duration: 0.5,
+            easing: spring({ stiffness: 300, damping: 20 })
+          });
+
+          animate('#laser-visual-chamber', {
+            opacity: [0, 1],
+            transform: ['scale(0.94) rotate(1deg)', 'scale(1) rotate(0deg)']
+          }, {
+            duration: 0.8,
+            easing: spring({ stiffness: 210, damping: 22 })
+          });
+        });
+
+        // 3. SECTION 3 MOTION: Prismatic Dual-Mirror Aperture & Chromatic Split
+        inView('#prism-arena', () => {
+          animate('#prism-arena', {
+            opacity: [0, 1],
+            transform: ['perspective(1200px) rotateX(8deg) translateY(35px)', 'perspective(1200px) rotateX(0deg) translateY(0px)']
+          }, {
+            duration: 0.9,
+            easing: spring({ stiffness: 200, damping: 24 })
+          });
+        });
+
+        // 4. SECTION 4 MOTION: Architectural Monolith Stagger & Medical Seal Rotation
+        inView('#monolith-grid', () => {
+          animate('.faculty-monolith', {
+            opacity: [0, 1],
+            transform: ['translateY(40px) scale(0.94)', 'translateY(0px) scale(1)']
+          }, {
+            delay: window.Motion.stagger(0.12),
+            duration: 0.75,
+            easing: spring({ stiffness: 230, damping: 22 })
+          });
+        });
+
+        // 5. SECTION 5 MOTION: Hexagonal Molecular Pop & Hex-Chain Wave Pulse
+        inView('#hex-reactor-grid', () => {
+          animate('.hex-cell', {
+            opacity: [0, 1],
+            transform: ['scale(0.88) translateY(20px)', 'scale(1) translateY(0px)']
+          }, {
+            delay: window.Motion.stagger(0.08),
+            duration: 0.6,
+            easing: spring({ stiffness: 270, damping: 20 })
+          });
+        });
+
+        // 6. SECTION 6 MOTION: Cleanroom Air-Lock Slide & VIP Passport Verification
+        inView('#cleanroom-terminal', () => {
+          animate('#cleanroom-terminal', {
+            opacity: [0, 1],
+            transform: ['scale(0.96) translateY(30px)', 'scale(1) translateY(0px)']
+          }, {
+            duration: 0.85,
+            easing: spring({ stiffness: 210, damping: 22 })
+          });
+        });
+      }
+    });
+
+    // --- Interactive Rotunda Biological Target Selector ---
+    const targetMap = {
+      'melasma': 'MELASMA & DEEP PIGMENTATION',
+      'acne': 'CYSTIC ACNE & TETHERED SCARS',
+      'laxity': 'MANDIBULAR JAWLINE LIFT',
+      'rosacea': 'VASCULAR ERYTHEMA & ROSACEA'
+    };
+
+    function selectRotundaTarget(targetKey) {
+      playClickSound();
+      document.querySelectorAll('.rotunda-target-btn').forEach(btn => {
+        btn.classList.remove('bg-teal-600', 'text-white', 'shadow');
+        btn.classList.add('bg-slate-100', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
+      });
+      event.currentTarget.classList.remove('bg-slate-100', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
+      event.currentTarget.classList.add('bg-teal-600', 'text-white', 'shadow');
+
+      const label = document.getElementById('active-target-label');
+      if (label && targetMap[targetKey]) {
+        label.textContent = targetMap[targetKey];
+      }
+    }
+
+    // --- Interactive Wavelength Spectrum Ribbon Selector ---
+    const wavelengthData = {
+      '532': {
+        model: 'KTP Solid-State Laser (532nm)',
+        pulse: 'Pulse: 2.0 Milliseconds',
+        title: 'Superficial Solar Lentigines & Freckles',
+        desc: 'Highly selective absorption in superficial epidermal melanin. Clears sunspots and café-au-lait macules with minimal crusting.',
+        chromo: 'Superficial Melanin',
+        depth: '0.4 mm Epidermis',
+        down: '< 24 Hours'
+      },
+      '595': {
+        model: 'Vbeam Perfecta Pulsed Dye (595nm)',
+        pulse: 'Pulse: 0.45 - 40 Milliseconds',
+        title: 'Micro-Vascular Capillary Coagulation',
+        desc: 'Targeted oxyhemoglobin absorption safely collapses dilated facial telangiectasias, cherry angiomas, and active inflammatory rosacea flushing.',
+        chromo: 'Oxyhemoglobin',
+        depth: '0.9 mm Vascular',
+        down: 'Zero Downtime'
+      },
+      '755': {
+        model: 'PicoSure Pro 755nm Alexandrite',
+        pulse: 'Pulse: 450 Picoseconds',
+        title: 'Sub-Acoustic Photomechanical Disruption',
+        desc: 'Utilizes ultra-short pressure waves rather than photothermal heat to shatter dense epidermal melanosomes and stubborn post-inflammatory hyperpigmentation.',
+        chromo: 'Melanin Core',
+        depth: '1.2 mm Dermis',
+        down: '< 12 Hours'
+      },
+      '1064': {
+        model: 'Dual-Pulse Q-Switched Nd:YAG (1064nm)',
+        pulse: 'Pulse: 5 Nanoseconds',
+        title: 'Deep Dermal Nevus of Ota & Collagen Induction',
+        desc: 'Deepest optical dermal penetration safely bypassing epidermal melanin, making it the gold standard for Fitzpatrick IV-VI deep melasma.',
+        chromo: 'Deep Dermal Melanin',
+        depth: '3.5 mm Deep Dermis',
+        down: 'Zero Downtime'
+      },
+      '10600': {
+        model: 'Fractional Ultrapulse CO2 (10,600nm)',
+        pulse: 'Pulse: 1.0 Millisecond Micro-Beam',
+        title: 'Fractional Micro-Ablative Collagen Remodeling',
+        desc: 'Vaporizes microscopic thermal columns into deep rolling acne scars, contracting aged collagen fibers and inducing massive new elastin growth.',
+        chromo: 'Intracellular Water',
+        depth: '4.0 mm Subdermis',
+        down: '3 - 5 Days'
+      }
+    };
+
+    function selectWavelength(wave) {
+      playClickSound();
+      document.querySelectorAll('.wave-pill').forEach(btn => {
+        btn.classList.remove('active', 'bg-teal-500/20', 'text-teal-600', 'dark:text-teal-400', 'border-teal-500');
+        btn.classList.add('bg-slate-50', 'dark:bg-slate-800', 'text-slate-600', 'dark:text-slate-300', 'border-slate-200', 'dark:border-slate-700');
+      });
+      const activeBtn = document.getElementById(`wave-btn-${wave}`);
+      if (activeBtn) {
+        activeBtn.classList.remove('bg-slate-50', 'dark:bg-slate-800', 'text-slate-600', 'dark:text-slate-300', 'border-slate-200', 'dark:border-slate-700');
+        activeBtn.classList.add('active', 'bg-teal-500/20', 'text-teal-600', 'dark:text-teal-400', 'border-teal-500');
+      }
+
+      const d = wavelengthData[wave];
+      if (d) {
+        document.getElementById('laser-model-tag').textContent = d.model;
+        document.getElementById('laser-pulse-tag').textContent = d.pulse;
+        document.getElementById('laser-title').textContent = d.title;
+        document.getElementById('laser-desc').textContent = d.desc;
+        document.getElementById('laser-chromo').textContent = d.chromo;
+        document.getElementById('laser-depth').textContent = d.depth;
+        document.getElementById('laser-down').textContent = d.down;
+      }
+    }
+
+    // --- Interactive Fitzpatrick Dial Controller ---
+    const fitzData = {
+      'type1': { caseName: 'Case #102: Severe Solar Freckling', stats: 'Fitzpatrick Type I • 2 Sessions 532nm KTP', clearance: '99.1%' },
+      'type2': { caseName: 'Case #205: Erythematotelangiectatic Rosacea', stats: 'Fitzpatrick Type II • 3 Sessions 595nm PDL', clearance: '97.4%' },
+      'type3': { caseName: 'Case #8904: Refractory Deep Melasma', stats: 'Fitzpatrick Type III • 6 Sessions Dual-Pico Protocol', clearance: '98.4%' },
+      'type4': { caseName: 'Case #408: Post-Acne Hyperpigmentation', stats: 'Fitzpatrick Type IV • 4 Sessions 1064nm Sub-Acoustic', clearance: '96.8%' },
+      'type5': { caseName: 'Case #512: Keloidal Scar & Dermal Dyschromia', stats: 'Fitzpatrick Type V-VI • Non-Thermal Pico & Exosome Protocol', clearance: '95.2%' }
+    };
+
+    function selectFitzpatrick(typeKey) {
+      playClickSound();
+      document.querySelectorAll('.fitz-pill').forEach(btn => {
+        btn.classList.remove('bg-rose-500', 'text-white', 'shadow');
+        btn.classList.add('text-slate-600', 'dark:text-slate-400');
+      });
+      event.currentTarget.classList.remove('text-slate-600', 'dark:text-slate-400');
+      event.currentTarget.classList.add('bg-rose-500', 'text-white', 'shadow');
+
+      const data = fitzData[typeKey];
+      if (data) {
+        document.getElementById('prism-case-name').textContent = data.caseName;
+        document.getElementById('prism-case-stats').textContent = data.stats;
+        document.getElementById('prism-clearance').textContent = data.clearance;
+      }
+    }
+
+    // --- Interactive Consultation & Booking Handlers ---
+    function requestDermaConsultation() {
+      playClickSound();
+      alert(`[NexusDerma Rotunda Concierge] Direct Triage Request Dispatched!
+
+A Clinical Fellow has received your biological targets and will review your initial parameters prior to your in-clinic consultation.`);
+    }
+
+    function openProcedureDossier(procedure) {
+      playClickSound();
+      alert(`[Clinical Dossier] ${procedure}
+
+Protocol: FDA-Cleared, Board-Certified Physician Execution.
+Cross-polarized baseline dermoscopy and pre-procedure cryo-calming included.`);
+    }
+
+    function bookWithPhysician(doctor) {
+      playClickSound();
+      const select = document.getElementById('terminal-doctor');
+      if (select) {
+        for (let i = 0; i < select.options.length; i++) {
+          if (select.options[i].text.includes(doctor)) {
+            select.selectedIndex = i;
+            break;
+          }
+        }
+      }
+      document.getElementById('section-cleanroom-booking').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function submitDermaAppointment() {
+      playClickSound();
+      const name = document.getElementById('terminal-name').value || 'Valued Patient';
+      const doctor = document.getElementById('terminal-doctor').value;
+      const service = document.getElementById('terminal-service').value;
+
+      alert(`[VIP Reservation Confirmed] Welcome to NexusDerma Institute, ${name}!
+
+Attending Specialist: ${doctor}
+Procedure: ${service}
+
+An encrypted appointment pass, valet parking QR code, and pre-care instructions have been dispatched.`);
+    }
+</script>
+</body>
+</html>
