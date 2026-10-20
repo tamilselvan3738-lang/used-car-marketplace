@@ -10,10 +10,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>USED CAR MARKETPLACE - Ultra-Modern 3D Responsive Navbar</title>
 
-  <!-- Google Fonts: Plus Jakarta Sans (Primary UI) & Orbitron (Automotive Tech Accent) -->
+  <!-- Google Fonts: Outfit (Luxury Automotive Display) & Plus Jakarta Sans (Primary UI) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -24,7 +24,7 @@
         extend: {
           fontFamily: {
             sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-            display: ['"Orbitron"', 'sans-serif'],
+            display: ['"Outfit"', '"Plus Jakarta Sans"', 'sans-serif'],
           },
           colors: {
             brand: {
@@ -255,12 +255,12 @@
     /* ========================================================================= */
     /* BREAKPOINT: 1024px (Tablets Landscape, Laptops, Mobile Menus)             */
     /* ========================================================================= */
-    @media (max-width: 1024px) {
+    @media (max-width: 1279px) {
       /* Navbar Collapses into Mobile Menu */
       #desktop-nav {
         display: none !important;
       }
-      #hamburger-btn, .mobile-toggle-btn {
+      #hamburger-btn, .mobile-toggle-btn, .mobile-hamburger-wrap {
         display: flex !important;
       }
 
@@ -682,6 +682,15 @@
     .btn-3d-gold span, .btn-3d-gold strong {
       color: #020617 !important;
     }
+  
+    /* Prevent brand logo text from breaking into multiple lines on mobile */
+    .logo-container, #logo-brand-text, .logo-brand-subtext, #logo-subtext, a[aria-label*="Marketplace Home"] {
+      white-space: nowrap !important;
+      word-break: keep-all !important;
+      overflow-wrap: normal !important;
+      flex-shrink: 0 !important;
+    }
+
   </style>
 </head>
 <body class="bg-slate-100 text-slate-800 dark:bg-[#070b14] dark:text-slate-100 min-h-screen font-sans antialiased transition-colors duration-300 selection:bg-brand-500 selection:text-white pt-3 sm:pt-4 px-2 sm:px-4">
@@ -780,8 +789,8 @@
 
             <!-- Compact Brand Typography -->
             <div class="flex flex-col">
-              <div class="flex items-center space-x-1 rtl:space-x-reverse">
-                <span id="logo-brand-text" class="font-display font-black tracking-wider text-[13px] sm:text-sm bg-gradient-to-r from-slate-900 via-blue-600 to-slate-900 dark:from-white dark:via-cyan-300 dark:to-white bg-clip-text text-transparent group-hover:scale-[1.02] transition-transform duration-300 logo-shimmer">
+              <div class="flex items-center space-x-1 rtl:space-x-reverse flex-nowrap shrink-0 whitespace-nowrap">
+                <span id="logo-brand-text" class="font-display font-black tracking-wider text-[13px] sm:text-sm whitespace-nowrap bg-gradient-to-r from-slate-900 via-blue-600 to-slate-900 dark:from-white dark:via-cyan-300 dark:to-white bg-clip-text text-transparent group-hover:scale-[1.02] transition-transform duration-300 logo-shimmer">
                   AUTO<span class="text-brand-600 dark:text-cyan-400">NEXUS</span>
                 </span>
                 
@@ -804,7 +813,7 @@
         <!-- =================================================================== -->
         <!-- 2. CENTER: NAVBAR MENU (PERFECTLY CENTERED IN LAPTOP VIEW)          -->
         <!-- =================================================================== -->
-        <nav class="hidden lg:flex items-center justify-center relative mx-auto flex-shrink-0" id="desktop-nav" aria-label="Main Navigation">
+        <nav class="hidden xl:flex items-center justify-center relative mx-auto flex-shrink-0" id="desktop-nav" aria-label="Main Navigation">
           <!-- Framer Motion Floating Hover Pill Indicator -->
           <div id="nav-indicator" class="bg-slate-200/80 dark:bg-white/10 backdrop-blur-md transition-all duration-300 ease-out border border-slate-300/50 dark:border-white/15 shadow-sm"></div>
 
@@ -943,7 +952,7 @@
           </div>
 
           <!-- Mobile & Tab Hamburger Button (Right side on Tab & Mobile) -->
-          <div class="flex lg:hidden items-center">
+          <div class="flex xl:hidden items-center mobile-hamburger-wrap">
             <button id="hamburger-btn" class="btn-3d btn-3d-toggle w-9 h-9 p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-white border border-slate-300/80 dark:border-slate-700 flex flex-col items-center justify-center gap-1.5 focus:outline-none relative z-50 cursor-pointer shadow-3d-slate" aria-label="Open mobile navigation menu" aria-expanded="false">
               <span class="hamburger-bar block w-[18px] h-[2px] bg-slate-800 dark:bg-white rounded-full origin-center pointer-events-none"></span>
               <span class="hamburger-bar block w-[18px] h-[2px] bg-slate-800 dark:bg-white rounded-full origin-center pointer-events-none"></span>
@@ -961,10 +970,10 @@
   <!-- 4. MOBILE & TAB DRAWER (ALL MENUS, TOGGLES & LOGIN ARE INSIDE HERE)       -->
   <!-- ========================================================================= -->
   <!-- Backdrop Blur Overlay -->
-  <div id="mobile-backdrop" class="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 lg:hidden"></div>
+  <div id="mobile-backdrop" class="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 xl:hidden"></div>
 
   <!-- Slide-out Drawer Panel -->
-  <aside id="mobile-drawer" class="fixed top-0 bottom-0 right-0 rtl:right-auto rtl:left-0 z-50 w-full sm:w-[360px] max-w-full bg-white/95 dark:bg-[#0c1222]/95 backdrop-blur-2xl border-l rtl:border-l-0 rtl:border-r border-slate-200 dark:border-slate-800 shadow-2xl flex flex-col justify-between transform translate-x-full rtl:-translate-x-full transition-transform duration-300 ease-out lg:hidden" aria-label="Mobile Navigation Menu">
+  <aside id="mobile-drawer" class="fixed top-0 bottom-0 right-0 rtl:right-auto rtl:left-0 z-50 w-full sm:w-[360px] max-w-full bg-white/95 dark:bg-[#0c1222]/95 backdrop-blur-2xl border-l rtl:border-l-0 rtl:border-r border-slate-200 dark:border-slate-800 shadow-2xl flex flex-col justify-between transform translate-x-full rtl:-translate-x-full transition-transform duration-300 ease-out xl:hidden" aria-label="Mobile Navigation Menu">
     
     <!-- Drawer Header with Mini Animated Logo -->
     <div class="p-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
@@ -1156,9 +1165,9 @@
       <!-- Header & Intro -->
       <div class="max-w-4xl mx-auto text-center space-y-3 sm:space-y-4 mb-8 relative z-10">
         
-        <div class="inline-flex items-center space-x-2 rtl:space-x-reverse px-3 py-1.5 rounded-full bg-brand-500/10 dark:bg-cyan-500/10 text-brand-600 dark:text-cyan-400 border border-brand-500/20 dark:border-cyan-500/20 text-xs sm:text-sm font-bold tracking-wide">
-          <svg class="w-4 h-4 text-brand-600 dark:text-cyan-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-          <span>AUTONEXUS HEADQUARTERS // MISSION CONTROL &amp; CLIENT DESK</span>
+        <div class="inline-flex items-center space-x-1.5 rtl:space-x-reverse px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-cyan-400 border border-blue-200 dark:border-cyan-500/30 text-[11px] font-semibold uppercase tracking-wider">
+          <svg class="w-3.5 h-3.5 text-blue-600 dark:text-cyan-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          <span>Contact &amp; Support Hub</span>
         </div>
 
         <h1 class="text-2xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white tracking-tight leading-tight">
@@ -1231,9 +1240,9 @@
       <!-- Section Header -->
       <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 pb-6 border-b border-slate-200 dark:border-slate-800/80 gap-4">
         <div>
-          <div class="inline-flex items-center space-x-1.5 rtl:space-x-reverse text-xs font-bold text-cyan-600 dark:text-cyan-400 uppercase tracking-widest mb-1.5">
-            <svg class="w-4 h-4 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
-            <span>SPECIALIZED MARKETPLACE DIVISIONS</span>
+          <div class="inline-flex items-center space-x-1.5 rtl:space-x-reverse px-2.5 py-0.5 rounded-full bg-cyan-50 dark:bg-cyan-900/30 text-cyan-600 dark:text-cyan-400 border border-cyan-200 dark:border-cyan-500/30 text-[11px] font-semibold uppercase tracking-wider mb-2">
+            <svg class="w-3.5 h-3.5 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+            <span>Specialized Departments</span>
           </div>
           <h2 class="text-xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight">
             Customer, Buyer, Seller &amp; Inspection Support
@@ -1843,6 +1852,7 @@
     </section>
 
     <!-- ======================================================================= -->
+    <!-- ======================================================================= -->
     <!-- SECTION 7: EXECUTIVE ESCALATION & EMERGENCY ROADSIDE CONCIERGE          -->
     <!-- ======================================================================= -->
     <section id="contact-emergency" class="relative rounded-3xl bg-white/95 dark:bg-[#0c1222]/95 backdrop-blur-2xl border border-slate-200/90 dark:border-slate-800/90 shadow-2xl shadow-slate-900/5 dark:shadow-black/50 p-4 sm:p-8 lg:p-12 xl:p-14 overflow-hidden transition-all duration-300 contact-s7-emerg">
@@ -1851,25 +1861,42 @@
         
         <!-- Left 8 Cols: Urgent Hotdesk Alerts -->
         <div class="lg:col-span-8 space-y-3.5">
-          <div class="inline-flex items-center space-x-2 rtl:space-x-reverse px-2.5 py-0.5 rounded-full bg-rose-500/15 text-rose-600 dark:text-rose-400 border border-rose-500/30 text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider">
-            <span class="w-2 h-2 rounded-full bg-rose-500 animate-ping mr-1 rtl:mr-0 rtl:ml-1"></span>
-            24/7 Redline Escalation Desk Active
+          <!-- Refined micro-badge -->
+          <div class="inline-flex items-center space-x-1.5 rtl:space-x-reverse px-2.5 py-0.5 rounded-full bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 border border-rose-200 dark:border-rose-800/50 text-[11px] font-semibold uppercase tracking-wider">
+            <span class="w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse"></span>
+            <span>24/7 Priority Escalation</span>
           </div>
 
-          <h2 class="text-xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight">
+          <h2 class="text-xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
             Urgent Carrier Delays, Roadside &amp; Wire Cutoff Escalation
           </h2>
 
-          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl">
-            If your active transport carrier experiences an unpredicted en-route delay, your 24-hour test drive vehicle requires immediate roadside support, or your bank requires instant wire clearance authorization before Federal Reserve cutoff, engage our Redline Priority Dispatcher immediately:
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl font-normal">
+            Immediate dedicated assistance for en-route transport carrier updates, 24-hour test drive roadside emergencies, or bank wire clearance authorizations prior to Federal Reserve cutoffs.
           </p>
 
-          <div class="flex flex-wrap gap-3 pt-1">
-            <a href="tel:18002886639" class="btn-3d btn-3d-accent px-5 py-2.5 rounded-xl text-slate-950 font-black text-xs sm:text-sm flex items-center space-x-2 rtl:space-x-reverse cursor-pointer">
+          <!-- 3 Quick Scannable Status Pills -->
+          <div class="flex flex-wrap gap-2 pt-1 pb-1">
+            <span class="inline-flex items-center px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 text-xs font-medium border border-slate-200/80 dark:border-slate-700/60">
+              <svg class="w-3.5 h-3.5 text-emerald-500 mr-1.5 rtl:mr-0 rtl:ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+              <span>Avg Hotline Response: &lt;60s</span>
+            </span>
+            <span class="inline-flex items-center px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 text-xs font-medium border border-slate-200/80 dark:border-slate-700/60">
+              <svg class="w-3.5 h-3.5 text-cyan-500 mr-1.5 rtl:mr-0 rtl:ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+              <span>Direct Carrier GPS Tracking</span>
+            </span>
+            <span class="inline-flex items-center px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 text-xs font-medium border border-slate-200/80 dark:border-slate-700/60">
+              <svg class="w-3.5 h-3.5 text-amber-500 mr-1.5 rtl:mr-0 rtl:ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+              <span>Fedwire Escrow Clearance</span>
+            </span>
+          </div>
+
+          <div class="flex flex-wrap gap-3 pt-2">
+            <a href="tel:18002886639" class="btn-3d btn-3d-accent px-4 sm:px-5 py-2.5 rounded-xl text-slate-950 font-bold text-xs sm:text-sm flex items-center space-x-2 rtl:space-x-reverse cursor-pointer shadow-md">
               <svg class="w-4 h-4 text-slate-950" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
               <span>Direct Emergency Hotline (Toll-Free)</span>
             </a>
-            <button type="button" onclick="alert('[Live Escalation Chat] Connecting directly to Senior Executive Escalation Officer... Connection established!');" class="btn-3d px-5 py-2.5 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-100 hover:text-slate-900 dark:hover:text-white font-bold text-xs sm:text-sm flex items-center space-x-2 rtl:space-x-reverse cursor-pointer">
+            <button type="button" onclick="alert('[Live Escalation Chat] Connecting directly to Senior Executive Escalation Officer... Connection established!');" class="btn-3d px-4 sm:px-5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100 font-bold text-xs sm:text-sm flex items-center space-x-2 rtl:space-x-reverse cursor-pointer border border-slate-300/80 dark:border-slate-700">
               <svg class="w-4 h-4 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
               <span>Instant Live Escalation Chat</span>
             </button>
@@ -1885,8 +1912,8 @@
             loading="lazy"
           />
           <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent flex flex-col justify-end p-4">
-            <span class="text-xs font-mono font-bold text-rose-400 uppercase tracking-widest">24/7 Redline Dispatch</span>
-            <p class="text-xs text-white">White-glove roadside &amp; emergency wire cutoff resolution.</p>
+            <span class="text-[10px] font-semibold text-rose-400 uppercase tracking-wider">24/7 Redline Dispatch</span>
+            <p class="text-xs text-white">White-glove roadside assistance &amp; emergency wire cutoff resolution.</p>
           </div>
         </div>
 

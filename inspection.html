@@ -10,10 +10,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>USED CAR MARKETPLACE - Ultra-Modern 3D Responsive Navbar</title>
 
-  <!-- Google Fonts: Plus Jakarta Sans (Primary UI) & Orbitron (Automotive Tech Accent) -->
+  <!-- Google Fonts: Outfit (Luxury Automotive Display) & Plus Jakarta Sans (Primary UI) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -24,7 +24,7 @@
         extend: {
           fontFamily: {
             sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-            display: ['"Orbitron"', 'sans-serif'],
+            display: ['"Outfit"', '"Plus Jakarta Sans"', 'sans-serif'],
           },
           colors: {
             brand: {
@@ -255,12 +255,12 @@
     /* ========================================================================= */
     /* BREAKPOINT: 1024px (Tablets Landscape, Laptops, Mobile Menus)             */
     /* ========================================================================= */
-    @media (max-width: 1024px) {
+    @media (max-width: 1279px) {
       /* Navbar Collapses into Mobile Menu */
       #desktop-nav {
         display: none !important;
       }
-      #hamburger-btn, .mobile-toggle-btn {
+      #hamburger-btn, .mobile-toggle-btn, .mobile-hamburger-wrap {
         display: flex !important;
       }
 
@@ -682,6 +682,15 @@
     .btn-3d-gold span, .btn-3d-gold strong {
       color: #020617 !important;
     }
+  
+    /* Prevent brand logo text from breaking into multiple lines on mobile */
+    .logo-container, #logo-brand-text, .logo-brand-subtext, #logo-subtext, a[aria-label*="Marketplace Home"] {
+      white-space: nowrap !important;
+      word-break: keep-all !important;
+      overflow-wrap: normal !important;
+      flex-shrink: 0 !important;
+    }
+
   </style>
 </head>
 <body class="bg-slate-100 text-slate-800 dark:bg-[#070b14] dark:text-slate-100 min-h-screen font-sans antialiased transition-colors duration-300 selection:bg-brand-500 selection:text-white pt-3 sm:pt-4 px-2 sm:px-4">
@@ -780,8 +789,8 @@
 
             <!-- Compact Brand Typography -->
             <div class="flex flex-col">
-              <div class="flex items-center space-x-1 rtl:space-x-reverse">
-                <span id="logo-brand-text" class="font-display font-black tracking-wider text-[13px] sm:text-sm bg-gradient-to-r from-slate-900 via-blue-600 to-slate-900 dark:from-white dark:via-cyan-300 dark:to-white bg-clip-text text-transparent group-hover:scale-[1.02] transition-transform duration-300 logo-shimmer">
+              <div class="flex items-center space-x-1 rtl:space-x-reverse flex-nowrap shrink-0 whitespace-nowrap">
+                <span id="logo-brand-text" class="font-display font-black tracking-wider text-[13px] sm:text-sm whitespace-nowrap bg-gradient-to-r from-slate-900 via-blue-600 to-slate-900 dark:from-white dark:via-cyan-300 dark:to-white bg-clip-text text-transparent group-hover:scale-[1.02] transition-transform duration-300 logo-shimmer">
                   AUTO<span class="text-brand-600 dark:text-cyan-400">NEXUS</span>
                 </span>
                 
@@ -804,7 +813,7 @@
         <!-- =================================================================== -->
         <!-- 2. CENTER: NAVBAR MENU (PERFECTLY CENTERED IN LAPTOP VIEW)          -->
         <!-- =================================================================== -->
-        <nav class="hidden lg:flex items-center justify-center relative mx-auto flex-shrink-0" id="desktop-nav" aria-label="Main Navigation">
+        <nav class="hidden xl:flex items-center justify-center relative mx-auto flex-shrink-0" id="desktop-nav" aria-label="Main Navigation">
           <!-- Framer Motion Floating Hover Pill Indicator -->
           <div id="nav-indicator" class="bg-slate-200/80 dark:bg-white/10 backdrop-blur-md transition-all duration-300 ease-out border border-slate-300/50 dark:border-white/15 shadow-sm"></div>
 
@@ -943,7 +952,7 @@
           </div>
 
           <!-- Mobile & Tab Hamburger Button (Right side on Tab & Mobile) -->
-          <div class="flex lg:hidden items-center">
+          <div class="flex xl:hidden items-center mobile-hamburger-wrap">
             <button id="hamburger-btn" class="btn-3d btn-3d-toggle w-9 h-9 p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-white border border-slate-300/80 dark:border-slate-700 flex flex-col items-center justify-center gap-1.5 focus:outline-none relative z-50 cursor-pointer shadow-3d-slate" aria-label="Open mobile navigation menu" aria-expanded="false">
               <span class="hamburger-bar block w-[18px] h-[2px] bg-slate-800 dark:bg-white rounded-full origin-center pointer-events-none"></span>
               <span class="hamburger-bar block w-[18px] h-[2px] bg-slate-800 dark:bg-white rounded-full origin-center pointer-events-none"></span>
@@ -961,10 +970,10 @@
   <!-- 4. MOBILE & TAB DRAWER (ALL MENUS, TOGGLES & LOGIN ARE INSIDE HERE)       -->
   <!-- ========================================================================= -->
   <!-- Backdrop Blur Overlay -->
-  <div id="mobile-backdrop" class="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 lg:hidden"></div>
+  <div id="mobile-backdrop" class="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 xl:hidden"></div>
 
   <!-- Slide-out Drawer Panel -->
-  <aside id="mobile-drawer" class="fixed top-0 bottom-0 right-0 rtl:right-auto rtl:left-0 z-50 w-full sm:w-[360px] max-w-full bg-white/95 dark:bg-[#0c1222]/95 backdrop-blur-2xl border-l rtl:border-l-0 rtl:border-r border-slate-200 dark:border-slate-800 shadow-2xl flex flex-col justify-between transform translate-x-full rtl:-translate-x-full transition-transform duration-300 ease-out lg:hidden" aria-label="Mobile Navigation Menu">
+  <aside id="mobile-drawer" class="fixed top-0 bottom-0 right-0 rtl:right-auto rtl:left-0 z-50 w-full sm:w-[360px] max-w-full bg-white/95 dark:bg-[#0c1222]/95 backdrop-blur-2xl border-l rtl:border-l-0 rtl:border-r border-slate-200 dark:border-slate-800 shadow-2xl flex flex-col justify-between transform translate-x-full rtl:-translate-x-full transition-transform duration-300 ease-out xl:hidden" aria-label="Mobile Navigation Menu">
     
     <!-- Drawer Header with Mini Animated Logo -->
     <div class="p-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
@@ -1148,7 +1157,7 @@
 
       <!-- Header & Inspection Overview -->
       <div class="max-w-4xl mx-auto text-center space-y-3 sm:space-y-4 mb-8 sm:mb-12 relative z-10">
-        <div class="inline-flex items-center space-x-2 rtl:space-x-reverse px-3 py-1.5 rounded-full bg-cyan-500/10 text-cyan-500 dark:text-cyan-400 border border-cyan-500/20 text-xs sm:text-sm font-bold tracking-wide">
+        <div class="inline-flex items-center space-x-2 rtl:space-x-reverse px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-500 dark:text-cyan-400 border border-cyan-500/20 text-[11px] font-semibold uppercase tracking-wider">
           <svg class="w-4 h-4 text-cyan-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
           <span>Aerospace-Grade Automotive Certification</span>
         </div>
